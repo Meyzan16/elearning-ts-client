@@ -5,6 +5,7 @@ import Header from './components/homepage/Header';
 import Hero from './components/homepage/Hero';
 import Corporate from './components/homepage/Corporate';
 import MenuKelas from './components/homepage/MenuKelas';
+import Benefit from './components/homepage/Benefit';
 
 interface Props {}
 
@@ -27,6 +28,8 @@ const Page: FC<Props> = (props) => {
       <Hero />
       <Corporate />
       <MenuKelas />
+      <Benefit/>
+      <Corporate />
      
     </div>
   )

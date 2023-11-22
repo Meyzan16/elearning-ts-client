@@ -10,7 +10,7 @@ const MenuKelas = (props: Props) => {
           <div className="text-primary font-Poppins text-lg font-semibold">
             Start learning today
           </div>
-          <div className="text-4xl text-primary font-Poppins pt-2 font-bold leading-relaxed ">
+          <div className="text-3xl text-primary font-Poppins pt-2 font-bold leading-relaxed ">
             Kelas Online Design,
             <span className="block mt-[2px]">Development, dan Freelancer</span>
           </div>

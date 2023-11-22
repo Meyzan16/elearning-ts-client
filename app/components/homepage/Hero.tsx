@@ -12,7 +12,7 @@ const Hero: FC<Props> = (props) => {
         <div className="xl:mr-auto xl:place-self-center lg:col-span-5 lg:text-left md:px-8 ">
           <h1
             className="font-Poppins text-primary max-w-2xl mb-6 font-extrabold
-          leading-relaxed text-5xl lg:text-4xl xl:text-5xl items-center "
+          leading-relaxed text-3xl md:text-5xl lg:text-4xl xl:text-5xl items-center "
           >
             Your Dream Career
             <span
@@ -22,7 +22,7 @@ const Hero: FC<Props> = (props) => {
             </span>
           </h1>
           
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl leading-relaxed font-Poppins">
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 text-sm md:text-lg lg:text-xl leading-relaxed font-Poppins">
             BuildRunLearning menyediakan kelas UI/UX design, Web Development,
             dan Freelancer untuk pemula.
           </p>
@@ -43,8 +43,8 @@ const Hero: FC<Props> = (props) => {
             >
               Alur Belajar
             </button>
-
           </div>
+          
         </div>
 
         <div  data-aos="zoom-in" data-aos-duration="1200" className="hidden lg:col-span-7 lg:flex justify-end">
