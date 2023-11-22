@@ -4,6 +4,8 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
 import { ThemeProvider } from "./utils/theme-provider";
+import AosInit from "./components/aos/AosInit";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,6 +19,7 @@ const josefin = Josefin_Sans({
   variable: "--font-Josefin",
 });
 
+
 export default function RootLayout({
   children,
 }: {
@@ -24,12 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <AosInit />
       <body
-        className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b  dark:from-gray-900 dark:to-black duration:300`}
+        // className={`${poppins.variable} ${josefin.variable} bg-white bg-no-repeat dark:bg-gradient-to-b  dark:from-gray-900 dark:to-black duration:300`}
+        className={`${poppins.variable} ${josefin.variable} bg-slate-50 bg-no-repeat duration:300`}
       >
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           {children}
-        </ThemeProvider>
+
+        {/* <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+        </ThemeProvider> */}
       </body>
     </html>
   );

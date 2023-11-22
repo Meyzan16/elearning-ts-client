@@ -26,6 +26,8 @@ module.exports = {
           primary: '#14b8a6',
           secondary: '#64748b',
           dark: '#0f172a',
+          
+          
       },
       screens:{
         "1000px":"1000px",
@@ -33,7 +35,7 @@ module.exports = {
         "1200px":"1200px",
         "1300px":"1300px",
         "1500px":"1500px",
-        "800px":"800px",
+        "800px":"800px", 
         "400px":"400px",
       }
     },
