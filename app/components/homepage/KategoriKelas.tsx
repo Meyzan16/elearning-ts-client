@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
-type Props = {};
 
-const MenuKelas = (props: Props) => {
+
+const MenuKelas = () => {
   return (
-    <div className="pb-16 hidden sm:flex ">
+    <div className="mb-20 hidden md:flex ">
       <div className="container">
         <div className="block">
           <div className="text-primary font-Poppins text-lg font-semibold">
             Start learning today
           </div>
-          <div className="text-3xl text-primary font-Poppins pt-2 font-bold leading-relaxed ">
+          <div className="text-3xl text-slate-800 font-Poppins pt-2 font-bold leading-relaxed ">
             Kelas Online Design,
             <span className="block mt-[2px]">Development, dan Freelancer</span>
           </div>

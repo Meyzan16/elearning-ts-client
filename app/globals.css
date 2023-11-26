@@ -40,6 +40,25 @@ body {
  
 }
 
+
+
+
+.banner-item {
+  flex-shrink: 0;/* Sesuaikan dengan gaya Anda */
+  transition: transform 0.5s ease; /* Efek transisi yang mulus */
+}
+
+@keyframes moveBanner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Bergerak ke kiri sejauh lebar item */
+  }
+}
+
+
+
 @keyframes changeBackgroundColor {
     0%, 100% {
       opacity: 1;

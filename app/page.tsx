@@ -4,8 +4,11 @@ import Heading from './utils/Heading';
 import Header from './components/homepage/Header';
 import Hero from './components/homepage/Hero';
 import Corporate from './components/homepage/Corporate';
-import MenuKelas from './components/homepage/MenuKelas';
+import KategoriKelas from './components/homepage/KategoriKelas';
 import Benefit from './components/homepage/Benefit';
+import Kelas from './components/homepage/Kelas';
+import CatalogRilis from './components/homepage/CatalogRilis';
+import BannerPromo from './components/homepage/BannerPromo';
 
 interface Props {}
 
@@ -20,6 +23,7 @@ const Page: FC<Props> = (props) => {
         description='ELearning is a platform for students to learn and get help from teachers'
         keywords='Programming, Mern , Redux , Machine Learning'
       />
+      <BannerPromo />
       <Header
         open={open}
         setOpen={setOpen}
@@ -27,9 +31,10 @@ const Page: FC<Props> = (props) => {
       />
       <Hero />
       <Corporate />
-      <MenuKelas />
+      <KategoriKelas />
       <Benefit/>
-      <Corporate />
+      <Kelas />
+      <CatalogRilis />
      
     </div>
   )

@@ -5,24 +5,24 @@ type Props = {};
 
 const Benefit = (props: Props) => {
   return (
-    <div className="pb-16 h-full ">
-      <div className=" xl:max-w-screen-1300px mx-auto w-full  ">
+    <div className="mb-20">
+      <div className=" xl:max-w-screen-1300px mx-auto w-full   ">
         <div className="w-full px-4  lg:flex mx-auto">
 
           <div className=" w-full lg:flex lg:justify-center lg:items-center xl:w-1/2 lg:mr-12 ">
             <Image
               src={require("../../../public/assets/benefit.png")}
               alt=""
-              className="object-contain xl:max-w-2xl  md:max-w-xl  w-full mx-auto h-[auto]"
+              className="object-contain xl:max-w-3xl  md:max-w-xl  w-full mx-auto h-[auto]"
             />
           </div>
 
-          <div className=" mt-8 w-full lg:mx-auto lg:items-center-center xl:w-1/2 lg:px-2 ">
+          <div className=" mt-4 w-full lg:mx-auto lg:items-center-center xl:w-1/2 lg:px-2 ">
             <div className="text-primary font-Poppins text-lg font-semibold">
               Start learning today
             </div>
-            <div className="xl:text-3xl lg:text-xl text-2xl text-primary font-Poppins pt-2 font-bold leading-10 ">
-              Privileges Dari BuildWithAngga
+            <div className="xl:text-3xl lg:text-xl text-2xl text-slate-800 font-Poppins pt-2 font-bold leading-10 ">
+              Privileges Dari BuildRunLearning
               <span className="block mt-[2px]">Karir Semakin Tumbuh</span>
             </div>
             <div className="pt-4">
@@ -72,6 +72,9 @@ const Benefit = (props: Props) => {
                   Privileges kelas online lainnya
                 </p>
               </div>
+                <button className="px-4 py-2 bg-primary rounded-full font-Poppins mt-4 font-semibold">
+                  Join Now
+                </button>
             </div>
           </div>
 

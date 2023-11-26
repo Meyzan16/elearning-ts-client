@@ -54,6 +54,7 @@ const Hero: FC<Props> = (props) => {
             className="object-contain xl:max-w-2xl md:max-w-xl h-[auto]"
           />
         </div>
+
       </div>
     </div>
   );
