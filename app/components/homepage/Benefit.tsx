@@ -21,7 +21,7 @@ const Benefit = (props: Props) => {
             <div className="text-primary font-Poppins text-lg font-semibold">
               Start learning today
             </div>
-            <div className="xl:text-3xl lg:text-xl text-2xl text-slate-800 font-Poppins pt-2 font-bold leading-10 ">
+            <div className="xl:text-3xl lg:text-xl text-2xl text-slate-700 font-Poppins pt-2 font-bold leading-10 ">
               Privileges Dari BuildRunLearning
               <span className="block mt-[2px]">Karir Semakin Tumbuh</span>
             </div>

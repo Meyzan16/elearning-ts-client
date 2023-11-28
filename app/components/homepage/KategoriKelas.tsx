@@ -10,7 +10,7 @@ const MenuKelas = () => {
           <div className="text-primary font-Poppins text-lg font-semibold">
             Start learning today
           </div>
-          <div className="text-3xl text-slate-800 font-Poppins pt-2 font-bold leading-relaxed ">
+          <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
             Kelas Online Design,
             <span className="block mt-[2px]">Development, dan Freelancer</span>
           </div>
@@ -118,6 +118,8 @@ const MenuKelas = () => {
                   <p className="text-base text-slate-500 font-semibold">Bikin website & aplikasi</p>
                 </h5>
               </div>
+
+              
             </div>
           </div>
         </div>

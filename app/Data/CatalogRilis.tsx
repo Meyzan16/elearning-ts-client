@@ -24,7 +24,7 @@ const CatalogRilisData: Props[]  = [
         "title" : "Full-stack Laravel Flutter: Build e-wallet mobile test test tetst tst etststts  ",
         "price" : 690000,
         "promo" : 20,
-        // "iconInfo":true,
+        "iconInfo":true,
         "rating": 4,
         "countUser": 1900
     },

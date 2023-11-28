@@ -42,7 +42,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
             : "w-full border-b h-[90px] z-[80]"
         }`}
       >
-        <div className="w-[95%] 800px:w-[92%] m-auto py-2 h-full ">
+        <div className="w-[95%] 800px:w-[90%] m-auto py-2 h-full ">
           <div className="w-full h-[80px] flex items-center justify-between p-3 ">
             <div className="flex gap-2">
               <Link
@@ -75,13 +75,15 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
             </div>
 
             <div className="hidden xl:flex  items-center gap-4">
-              <div className="text-white rounded-full py-2 px-6 text-center bg-primary font-Poppins font-[600]">
+              <div className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins font-[600]">
                 Sign Up
               </div>
-              <div className="text-white rounded-full py-2 px-6 text-center bg-primary font-Poppins  font-[600]">
+              <div className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins  font-[600]">
                 Sign In
               </div>
             </div>
+
+            
           </div>
         </div>
 

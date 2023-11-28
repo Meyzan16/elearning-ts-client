@@ -42,19 +42,17 @@ body {
 
 
 
-
-.banner-item {
-  flex-shrink: 0;/* Sesuaikan dengan gaya Anda */
-  transition: transform 0.5s ease; /* Efek transisi yang mulus */
-}
-
-@keyframes moveBanner {
+@keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); /* Bergerak ke kiri sejauh lebar item */
+    transform: translateX(-100%);
   }
+}
+
+.animate-marquee {
+  animation: marquee 10s linear infinite;
 }
 
 
