@@ -5,43 +5,46 @@ type Props = {};
 
 const Hero: FC<Props> = (props) => {
   return (
-    <div className="w-full py-16  flex-col items-center justify-between">
+    <div className="w-full py-16 md:px-10 lg:px-0  flex-col items-center justify-between  ">
 
-      <div className="lg:flex lg:justify-center lg:items-center lg:max-w-[1400px] md:max-w-4xl px-8 justify-center mx-auto  xl:gap-4">
+      <div className="lg:flex lg:justify-center lg:items-center lg:max-w-[1400px] md:max-w-4xl px-4 justify-center mx-auto  xl:gap-4">
 
-        <div className="xl:mr-auto xl:place-self-center lg:col-span-5 lg:text-left md:px-8 ">
+        <div className="xl:mr-auto xl:place-self-center lg:col-span-5 lg:text-left  ">
           <h1
             className="font-Poppins text-primary max-w-2xl mb-6 font-extrabold
-          leading-relaxed text-3xl md:text-5xl lg:text-4xl xl:text-5xl items-center "
+          leading-relaxed text-3xl md:text-5xl lg:text-3xl xl:text-5xl items-center "
           >
             Your Dream Career
             <span
-              className="block lg:mt-3 mt-[0.20rem]"
+              className="block lg:mt-3 xl:mt-6"
             >
               Starts With Us
             </span>
           </h1>
           
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 text-sm md:text-lg lg:text-xl leading-relaxed font-Poppins">
+          <p className="max-w-2xl mb-6 text-gray-500 lg:mb-8 text-sm font-[600] l xl:text-xl leading-relaxed font-Poppins">
             BuildRunLearning menyediakan kelas UI/UX design, Web Development,
             dan Freelancer untuk pemula.
           </p>
 
           <div className="flex gap-2 justify-start">
-            <Link href="#"
-              className="bg-primary px-8 py-2 rounded-full font-Poppins font-[600]  hover:shadow-xl "
+            <button 
+              className="bg-primary px-6  xl:px-8 py-2 rounded-full  hover:shadow-xl "
               data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"
-              type="button"
             >
-              Alur Belajar
-            </Link>
-
-            <button
-              data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400"
-              type="button"
-              className="bg-primary px-8 py-2 rounded-full font-Poppins font-[600] "
+                <span className="font-Poppins font-semibold md:text-base lg:text-lg">
+                Alur Belajar
+                </span>
+          
+            </button>
+            <button 
+              className="bg-slate-200 px-6  xl:px-8 py-2 rounded-full font-Poppins font-semibold hover:shadow-xl "
+              data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"
             >
-              Alur Belajar
+                <span className="text-black font-Poppins font-semibold md:text-base lg:text-lg">
+                Alur Belajar
+                </span>
+          
             </button>
           </div>
           

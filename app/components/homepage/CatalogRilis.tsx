@@ -5,6 +5,7 @@ import StarRating from "../UI/Rating";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import Promo from "../UI/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import InfoPromo from "../UI/InfoPromo";
 
 type Props = {
   image: string;
@@ -18,10 +19,11 @@ type Props = {
 
 const CatalogRilis = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [modalPosition, setModalPosition] = useState({ top: 10, left: 0 });
 
-  const handleHover = (index: any, event: any) => {
+  const handleHover = (index: any, event: any) => { 
     setHoveredIndex(index);
     const rect = event.target.getBoundingClientRect();
     setModalPosition({ top: rect.bottom, left: rect.left - 140 });
@@ -29,7 +31,7 @@ const CatalogRilis = () => {
 
   return (
     <>
-      <div className=" hidden mb-20  md:flex ">
+      <div className=" hidden mb-20  md:flex md:px-12 lg:px-0 ">
         <div className="container">
           <div className="block">
             <div className="text-primary font-Poppins text-lg font-semibold">
@@ -45,7 +47,7 @@ const CatalogRilis = () => {
 
           <div className="flex w-full ">
             <div className="w-full mt-8">
-              <div className="w-full grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4 mx-auto  ">
+              <div className="w-full grid md:grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4 mx-auto  ">
                 {CatalogRilisData &&
                   CatalogRilisData.map((i: Props, index: number) => (
                     <div key={index}>
@@ -58,10 +60,10 @@ const CatalogRilis = () => {
                           alt="ImageCaption"
                           className="w-full cursor-pointer"
                         />
-                        <div className="px-6">
+                        <div className="px-4">
                           {/* title */}
                           <div
-                            className={`mt-2 cursor-pointer font-bold text-xl mb-2 text-slate-700 ${
+                            className={`mt-4 cursor-pointer font-bold lg:text-base xl:text-nd font-Poppins mb-2 text-slate-700 ${
                               isHovered !== index ? "line-clamp-2" : ""
                             }`}
                             onMouseEnter={() => setIsHovered(index)}
@@ -74,7 +76,7 @@ const CatalogRilis = () => {
                           <div
                             className={`pt-2 font-Poppins ${
                               i.promo ? "text-slate-500" : "text-black"
-                            } text-base flex items-center`}
+                            } lg:text-xs xl:text-base flex items-center`}
                           >
                             {i.promo && (
                               <>
@@ -92,15 +94,16 @@ const CatalogRilis = () => {
                                 onMouseLeave={() => setHoveredIndex(null)}
                               >
                                 <div className="bg-primary rounded-full cursor-pointer">
-                                  <IoIosInformationCircleOutline className="text-white text-2xl font-Poppins font-semibold" />
+                                  <IoIosInformationCircleOutline className="text-white lg:text-xl xl:text-2xl font-Poppins font-semibold" />
                                 </div>
+                                {}
                               </span>
                             )}
                           </div>
 
                           {/* rating section */}
                           <div
-                            className={`mt-8 mb-4 flex items-center justify-between`}
+                            className={`lg:mt-10 xl:mt-8 mb-4 flex items-center justify-between`}
                           >
                             <div className="flex justify-start items-center gap-2">
                               <StarRating rating={i.rating} />
@@ -129,24 +132,7 @@ const CatalogRilis = () => {
         </div>
       </div>
 
-      {hoveredIndex !== null && (
-        <div
-          className="fixed z-80 bg-white shadow-primary shadow-opacity-70 shadow-md p-4 rounded-xl shadow-full"
-          style={{
-            top: modalPosition.top,
-            left: modalPosition.left,
-            width: 280,
-          }}
-        >
-          <div className="text-primary font-Poppins text-md font-semibold">
-            Promo Patungan
-          </div>
-          <span className="max-w-full text-xs pt-1 w-full font-Poppins font-[400] text-slate-400">
-            kamu bisa mengajak 4 teman secara opsional untuk mendapatkan special
-            promo patungan 50k
-          </span>
-        </div>
-      )}
+      {hoveredIndex !== null && <InfoPromo modalPosition={modalPosition} />}
     </>
   );
 };

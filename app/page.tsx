@@ -69,7 +69,7 @@ const Page: FC<Props> = (props) => {
 
   return (
     <>
-      {!showHomePage ? (
+      {/* {!showHomePage ? (
         <div
           className="flex justify-center"
           data-aos="zoom-in"
@@ -78,7 +78,7 @@ const Page: FC<Props> = (props) => {
         >
           <BouncingBall show={showBall} />
         </div>
-      ) : (
+      ) : ( */}
     
         <div>
           <Heading
@@ -96,7 +96,7 @@ const Page: FC<Props> = (props) => {
           <CatalogRilis />
           <Reviews />
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };

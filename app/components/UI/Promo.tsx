@@ -8,6 +8,7 @@ const Promo: FC<HeadProps> = ({ promo }) => {
   const [blinkPromo, setBlinkPromo] = useState(false);
 
   useEffect(() => {
+    //  akan menjalankan fungsi callback setiap 500 milidetik 
     const interval = setInterval(() => {
       setBlinkPromo(prevState => !prevState);
     }, 500); // Ubah nilai ini untuk mengatur interval (dalam milidetik)
@@ -15,7 +16,7 @@ const Promo: FC<HeadProps> = ({ promo }) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, []); //dijalankan sekali setelah render pertama.
 
   return (
     <>

@@ -38,7 +38,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
       <div
         className={`${
           active
-            ? " bg-slate-50  fixed top-0  left-0 w-full h-[90px] z-[80] border-b shadow-lg transition translate-y duration-300"
+            ? " bg-white fixed top-0  left-0 w-full h-[90px] z-[80] border-b shadow-lg transition translate-y duration-300"
             : "w-full border-b h-[90px] z-[80]"
         }`}
       >

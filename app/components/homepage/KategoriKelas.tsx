@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const MenuKelas = () => {
   return (
-    <div className="mb-20 hidden md:flex ">
+    <div className="mb-20 hidden md:flex  md:px-12 lg:px-0">
       <div className="container">
         <div className="block">
           <div className="text-primary font-Poppins text-lg font-semibold">
