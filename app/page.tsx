@@ -88,7 +88,7 @@ const Page: FC<Props> = (props) => {
             keywords="Programming, Mern , Redux , Machine Learning"
           />
           <BannerPromo />
-          <Header open={open} setOpen={setOpen} activeItem={activeItem} setRoute={setRoute} route={route} />
+          <Header activeItem={activeItem}  />
           <Hero />
           <Corporate />
           <KategoriKelas />

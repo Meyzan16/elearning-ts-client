@@ -3,19 +3,16 @@ import Link from "next/link";
 import React, { FC, useContext, useState } from "react";
 import NavItems from "../../components/UI/NavItems/NavItems";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
-import CustomModal from "../../components/Modal/CustomModal";
+import ModalLogin from "../../components/Modal/CustomModalLogin";
 import Login from  "../../components/Auth/Login";
-import Register from "../../components/Auth/Register";
 
 import { GlobalContext } from "@/context";
 
 type Props = {
   activeItem: number;
-  route: string;
-  setRoute: (route: string) => void;
 };
 
-const Header: FC<Props> = ({ activeItem, route,  setRoute }) => {
+const Header: FC<Props> = ({ activeItem }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
   const {
@@ -80,9 +77,9 @@ const Header: FC<Props> = ({ activeItem, route,  setRoute }) => {
             </div>
 
             <div className="hidden xl:flex  items-center gap-4">
-              <div onClick={() =>  setComponentAuth({showModal:true , route:"Register"})} className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins font-[600]">
+              <Link href="/register" className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins font-[600]">
                 Sign Up
-              </div>
+              </Link>
               <div onClick={() =>  setComponentAuth({showModal:true , route:"Login"})} className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins  font-[600]">
                 Sign In
               </div>
@@ -119,7 +116,7 @@ const Header: FC<Props> = ({ activeItem, route,  setRoute }) => {
             <>
             {
               componentAuth.showModal && (
-                <CustomModal 
+                <ModalLogin 
                 open={componentAuth.showModal}
                 setOpen={componentAuth.showModal}
                 setRoute={componentAuth.route}
@@ -131,25 +128,6 @@ const Header: FC<Props> = ({ activeItem, route,  setRoute }) => {
               </>  
           )
       } 
-
-      {
-        componentAuth.route === "Register" && (
-          <>
-          {
-            componentAuth.showModal && (
-              <CustomModal 
-              open={componentAuth.showModal}
-              setOpen={componentAuth.showModal}
-              setRoute={componentAuth.route}
-              activeItem={activeItem}
-              component={Register}
-              />
-              )
-          }
-        </>
-        )
-      }
-
 
     </div>
   );

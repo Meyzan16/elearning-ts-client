@@ -25,24 +25,24 @@ export const loginFormControls: Props[] = [
 
 export const RegisterFormControls: Props[] = [  
     {
-        id: 'name',
-        type: 'text',
-        placeholder: 'Enter your name',
-        label: 'Name',
-        componentType: 'input',
-    },
-    {
         id: 'email',
         type: 'email',
         placeholder: 'Enter your email',
         label: 'Email',
-        componentType: 'input',
+        componentType: 'input'
     },
     {
         id: 'password',
         type: 'password',
         placeholder: 'Enter your password',
         label: 'Password',
-        componentType: 'input',
+        componentType: 'input'
+    },
+    {
+        id: 'name',
+        type: 'text',
+        placeholder: 'Enter your name',
+        label: 'Name',
+        componentType: 'input'
     },
 ];

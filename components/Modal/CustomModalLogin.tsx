@@ -10,7 +10,7 @@ type Props = {
     setRoute?:(route: string) => void;
 }
 
-const CustomModal: FC<Props> = ({open,setOpen,setRoute, component:Component}) => {
+const ModalLogin: FC<Props> = ({open,setOpen,setRoute, component:Component}) => {
   const {
     setComponentAuth,
   } = useContext(GlobalContext)!;
@@ -22,11 +22,11 @@ const CustomModal: FC<Props> = ({open,setOpen,setRoute, component:Component}) =>
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
     >
-        <Box className="py-12 absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] bg-white rounded-xl shadow px-8 outline-none">
+        <Box className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[700px] lg:w-[1000px] bg-white  shadow rounded-[40px] outline-none">
             <Component setOpen={setOpen} setRoute={setRoute} />
         </Box>
     </Modal>
   )
 }
 
-export default CustomModal;
+export default ModalLogin;

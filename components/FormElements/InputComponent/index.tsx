@@ -28,43 +28,46 @@ const InputComponent: FC<Interface> = ({
 
   return (
     <>
-      <div className="relative">
-        <p className="pt-0 pr-2 pb-0 pl-2 absolute -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 bg-white ">
-          {label}
-        </p>
+      <div className=" my-4">
+        <div className="relative">
+          <p className="pt-0 pr-2 pb-0 pl-2 absolute -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 bg-white ">
+            {label}
+          </p>
 
-        <input
-          placeholder={placeholder}
-          type={
-            isPasswordInput ? (!show ? "password" : "text") : type || "text"
-          }
-          value={value}
-          id={id}
-          onChange={onChange}
-          className={`${errors && touched && "border-red-500"}
-                  border text-black                           
-                  placeholder-gray-400 
-                  focus:outline-none 
-                  focus:border-black w-full 
-                  px-4 py-4 mb-2 mt-3 
-                  text-base block bg-white
-                  border-gray-300 rounded-lg `}
-        />
+          <input
+            placeholder={placeholder}
+            type={
+              isPasswordInput ? (!show ? "password" : "text") : type || "text"
+            }
+            value={value}
+            id={id}
+            onChange={onChange}
+            className={`${errors && touched && "border-red-500"}
+                      border text-black   
+                      font-poppins text-md font-semibold                        
+                      placeholder-gray-400 
+                      focus:outline-none 
+                      focus:border-primary w-full 
+                      px-4 py-4 my-0 mt-0 
+                      text-base block bg-white
+                      border-gray-300 rounded-lg `}
+          />
 
-        {isPasswordInput &&
-          (!show ? (
-            <AiOutlineEyeInvisible
-              className="absolute bottom-3 right-2 z-1 cursor-pointer text-black"
-              size={20}
-              onClick={() => setShow(true)}
-            />
-          ) : (
-            <AiOutlineEye
-              className="absolute bottom-3 right-2 z-1 cursor-pointer text-black "
-              size={20}
-              onClick={() => setShow(false)}
-            />
-          ))}
+          {isPasswordInput &&
+            (!show ? (
+              <AiOutlineEyeInvisible
+                className="absolute bottom-3 right-2 z-1 cursor-pointer text-black"
+                size={20}
+                onClick={() => setShow(true)}
+              />
+            ) : (
+              <AiOutlineEye
+                className="absolute bottom-3 right-2 z-1 cursor-pointer text-black "
+                size={20}
+                onClick={() => setShow(false)}
+              />
+            ))}
+        </div>
       </div>
       {errors && touched && (
         <span
