@@ -12,7 +12,7 @@ const Reviews = (props: Props) => {
         <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
             Join Our Supportive Community 😊
             <span className="block text-base font-Poppins text-slate-500">
-            BuildRunLearning menyediakan komunitas belajar UI/UX design & Web Development untuk pemula ke mahir
+            RunLearning menyediakan komunitas belajar UI/UX design & Web Development untuk pemula ke mahir
             </span>
         </div>
       </div>

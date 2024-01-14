@@ -1,17 +1,37 @@
 "use client";
 import Image from "next/image";
-import Data from "@/app/Data/Data";
-import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import Data from "@/data/Data";
 import { useMediaQuery } from "react-responsive";
 
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Import Swiper styles
+import 'swiper/css/autoplay'; // Import Swiper autoplay styles
+
+import { useState } from "react";
+
+
 const Kelas = () => {
+  const [swiper, setSwiper] = useState<any>(null);
+
+  const handleMouseEnter = () => {
+    if (swiper !== null) {
+      swiper.autoplay?.stop();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (swiper !== null) {
+      swiper.autoplay?.start();
+    }
+  };
+
+
   const isLG = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
   const isXL = useMediaQuery({ minWidth: 1280 });
 
   // Set slidesPerView sesuai dengan lebar layar
-  const slidesPerView = isLG ? 3 : isXL ? 5 : 1;
+  const slidesPerView = isLG ? 3 : isXL ? 5 : 2;
 
   return (
     <div className="mb-20 hidden lg:flex ">
@@ -19,15 +39,16 @@ const Kelas = () => {
         <div className="flex flex-col  gap-8 w-full justify-center items-center">
           <div className="text-center">
             <div className="text-primary font-Poppins text-lg font-semibold">
-              Mastering Freelancer Tools
+              Freelancer Tools
             </div>
             <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
-              Kelas Online BuildRunLearning.
+              Kelas Online RunLearning.
               <span className="block mt-[2px]">Teknologi terbaru</span>
             </div>
           </div>
 
           <Swiper
+            onSwiper={setSwiper}
             slidesPerView={slidesPerView}
             loop={true}
             autoplay={{
@@ -36,17 +57,19 @@ const Kelas = () => {
             }}
             speed={4000}
             modules={[Autoplay]}
-            className="w-full  "
+            className="w-full"
           >
-            {Data.slice(0, 6).map((i, index) => (
+            {Data.slice(0, 7).map((i, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="py-4 bg-white flex justify-center items-center gap-4 overflow-hidden  hover:scale-105 transition-all duration-500 rounded-2xl"
+                  className="py-4 bg-white flex justify-center items-center gap-4 overflow-hidden  hover:scale-105 transition-all duration-500 rounded-2xl cursor-pointer"
                   style={{ marginRight: "20px" }} // Tambahkan properti style dengan marginRight
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <figure className="">
                     <Image
-                      src={require(`../../../public/assets/skills/${i.image}`)}
+                      src={require(`../../public/assets/skills/${i.image}`)}
                       alt={`${i.title}`}
                       className="w-16"
                     />
@@ -77,7 +100,7 @@ const Kelas = () => {
             modules={[Autoplay]}
             className="w-full"
           >
-            {Data.slice(6, 12).map((i, index) => (
+            {Data.slice(7, 13).map((i, index) => (
               <SwiperSlide key={index}>
                 <div
                   className="py-4 bg-white flex justify-center items-center gap-4 overflow-hidden  hover:scale-105 transition-all duration-500 rounded-2xl"
@@ -85,7 +108,7 @@ const Kelas = () => {
                 >
                   <figure className="">
                     <Image
-                      src={require(`../../../public/assets/skills/${i.image}`)}
+                      src={require(`../../public/assets/skills/${i.image}`)}
                       alt={`${i.title}`}
                       className="w-16"
                     />

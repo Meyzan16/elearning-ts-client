@@ -23,7 +23,7 @@ const Hero: FC<Props> = (props) => {
           </h1>
           
           <p className="max-w-2xl mb-6 text-gray-500 lg:mb-8 text-sm font-[600] l xl:text-xl leading-relaxed font-Poppins">
-            BuildRunLearning menyediakan kelas UI/UX design, Web Development,
+            RunLearning menyediakan kelas UI/UX design, Web Development,
             dan Freelancer untuk pemula.
           </p>
 
@@ -52,7 +52,7 @@ const Hero: FC<Props> = (props) => {
 
         <div  data-aos="zoom-in" data-aos-duration="1200" className="hidden lg:col-span-7 lg:flex justify-end">
           <Image
-            src={require("../../../public/assets/bwaTest.webp")}
+            src={require("../../public/assets/bwaTest.webp")}
             alt="Header"
             className="object-contain xl:max-w-2xl md:max-w-xl h-[auto]"
           />

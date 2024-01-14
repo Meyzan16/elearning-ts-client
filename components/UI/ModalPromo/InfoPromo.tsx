@@ -12,7 +12,7 @@ const InfoPromo = ({
   return (
     <>
       <div
-        className="fixed z-80 bg-white shadow-primary shadow-opacity-70 shadow-md p-4 rounded-xl shadow-full"
+        className="fixed z-80 bg-white shadow-primary shadow-opacity-70 shadow-md p-4 rounded-xl shadow-full flex flex-col items-center justify-center"
         style={{
           top: top,
           left: left,

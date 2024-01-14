@@ -1,28 +1,6 @@
 import Link from "next/link";
 import React, { FC } from "react";
-
-export const navItemsData = [
-  {
-    name: "Home",
-    url: "/",
-  },
-  {
-    name: "Courses",
-    url: "/courses",
-  },
-  {
-    name: "About",
-    url: "/about",
-  },
-  {
-    name: "Policy",
-    url: "/policy",
-  },
-  {
-    name: "FAQ",
-    url: "/faq",
-  },
-];
+import NavItemsData from "@/data/NavItems";
 
 interface Props {
   activeItem: number;
@@ -33,8 +11,8 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
   return (
     <>
       <div className="hidden xl:flex">
-        {navItemsData &&
-          navItemsData.map((item, index) => (
+        {NavItemsData &&
+          NavItemsData.map((item, index) => (
             <Link href={`${item.url}`} key={index} passHref>
               <span
                 className={`${
@@ -59,8 +37,8 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
               E-Learning
             </Link>
           </div>
-          {navItemsData &&
-            navItemsData.map((item, index) => (
+          {NavItemsData &&
+            NavItemsData.map((item, index) => (
               <>
                 <Link href="/" passHref>
                   <span

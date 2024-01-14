@@ -10,66 +10,70 @@ const Data: Props[]  = [
     {
         "image" : "react.svg",
         "title" : "ReactJs",
-        "subTitle" : " Web Development"
+        "subTitle" : " Front end Development"
     },
     {
         "image" : "figma.svg",
         "title" : "Figma",
-        "subTitle" : " Web Development"
+        "subTitle" : " Desain Development"
     },
     {
         "image" : "golang.svg",
         "title" : "Golang",
-        "subTitle" : " Web Development"
+        "subTitle" : " Backend Development"
     },
     {
         "image" : "laravel.svg",
         "title" : "Laravel",
-        "subTitle" : " Web Development"
-    },
-    {
-        "image" : "vue.svg",
-        "title" : "Vue Js",
-        "subTitle" : " Web Development"
+        "subTitle" : "Backend Development"
     },
     {
         "image" : "graphql.png",
         "title" : "GraphQL",
-        "subTitle" : " Web Development"
+        "subTitle" : "Api Development"
     },
-
+    {
+        "image" : "mongodb.svg",
+        "title" : "Mongodb",
+        "subTitle" : "Database Development"
+    },
+    // end slide 1
     
-
+    //start slide 2
     {
         "image" : "dotnet.png",
         "title" : "Dotnet",
-        "subTitle" : " Web Development"
+        "subTitle" : "Backend Development"
+    },
+    {
+        "image" : "postgresql.svg",
+        "title" : "Postrage",
+        "subTitle" : "Database Development"
+    },
+    {
+        "image" : "express.png",
+        "title" : "Express",
+        "subTitle" : "Backend Development"
     },
     {
         "image" : "nestjs.png",
         "title" : "NestJs",
-        "subTitle" : " Web Development"
+        "subTitle" : "Backend Development"
     },
     {
         "image" : "nextjs.png",
         "title" : "NextJs",
-        "subTitle" : " Web Development"
-    },
-    {
-        "image" : "python.png",
-        "title" : "Python",
-        "subTitle" : " Web Development"
-    },
-   
+        "subTitle" : "FUllstack Development"
+    },   
     {
         "image" : "ts.png",
         "title" : "Typescript",
-        "subTitle" : " Web Development"
+        "subTitle" : " Development"
     },
     {
         "image" : "tailwind.png",
         "title" : "Tailwind",
-        "subTitle" : " Web Development"
+        "subTitle" : "Desain Development"
     },
    
 ]

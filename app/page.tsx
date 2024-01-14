@@ -1,15 +1,15 @@
 "use client";
 import React, { FC, useEffect, useState } from "react";
-import Heading from "./utils/Heading";
-import Header from "./components/homepage/Header";
-import Hero from "./components/homepage/Hero";
-import Corporate from "./components/homepage/Corporate";
-import KategoriKelas from "./components/homepage/KategoriKelas";
-import Benefit from "./components/homepage/Benefit";
-import Kelas from "./components/homepage/Kelas";
-import CatalogRilis from "./components/homepage/CatalogRilis";
-import BannerPromo from "./components/homepage/BannerPromo";
-import Reviews from "./components/homepage/Reviews";
+import Heading from "../components/UI/Heading/Heading";
+import Header from "./homepage/Header";
+import Hero from "./homepage/Hero";
+import Corporate from "./homepage/Corporate";
+import KategoriKelas from "./homepage/KategoriKelas";
+import Benefit from "./homepage/Benefit";
+import Kelas from "./homepage/Kelas";
+import CatalogRilis from "./homepage/CatalogRilis";
+import BannerPromo from "./homepage/BannerPromo";
+import Reviews from "./homepage/Reviews";
 import { useSpring, animated } from "@react-spring/web";
 
 interface Props {}
@@ -47,6 +47,7 @@ const BouncingBall = ({ show }: any) => {
 const Page: FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
+  const [route, setRoute] = useState("Sign-In");
 
   const [showBall, setShowBall] = useState(false);
   const [showHomePage, setShowHomePage] = useState(false);
@@ -87,7 +88,7 @@ const Page: FC<Props> = (props) => {
             keywords="Programming, Mern , Redux , Machine Learning"
           />
           <BannerPromo />
-          <Header open={open} setOpen={setOpen} activeItem={activeItem} />
+          <Header open={open} setOpen={setOpen} activeItem={activeItem} setRoute={setRoute} route={route} />
           <Hero />
           <Corporate />
           <KategoriKelas />

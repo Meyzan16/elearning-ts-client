@@ -16,6 +16,7 @@ const CatalogRilisData: Props[]  = [
         "image" : "https://source.unsplash.com/600x400?computer",
         "title" : "Full-stack Laravel Flutter: Build e-wallet mobile dan nextjs dan laravle dan react js",
         "price" : 690000,
+        "promo" : 20,
         "iconInfo":true,
         "rating":5,
         "countUser": 1900
@@ -43,6 +44,8 @@ const CatalogRilisData: Props[]  = [
         "rating":5,
         "countUser": 1900
     },
+ 
+   
 ]
 
 export default CatalogRilisData;

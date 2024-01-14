@@ -10,7 +10,7 @@ const Corporate = () => {
                        data-aos="zoom-in"
                        data-aos-duration="1000"
                        data-aos-delay="300"
-                    src={require("../../../public/assets/gojek.svg")}
+                    src={require("../../public/assets/gojek.svg")}
                     alt="gojek"
                 />
             </div>

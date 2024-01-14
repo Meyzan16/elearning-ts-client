@@ -25,22 +25,11 @@ body {
   animation: changeBackgroundColor 8s infinite alternate;
 }
 
-.orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
-}
-
-.green_gradient {
-  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
-}
-
 .container {
   max-width : 1500px;
   padding:12px;
   margin:auto;
- 
 }
-
-
 
 @keyframes marquee {
   0% {
@@ -54,8 +43,6 @@ body {
 .animate-marquee {
   animation: marquee 10s linear infinite;
 }
-
-
 
 @keyframes changeBackgroundColor {
     0%, 100% {
@@ -78,4 +65,10 @@ body {
     }
 }
 
+.title {
+  @apply text-[25px] text-primary font-semibold font-Poppins text-center py-2;
+}
 
+.label{
+  @apply text-[16px] font-Poppins text-black;
+}

@@ -1,19 +1,27 @@
 "use client";
 import Link from "next/link";
-import React, { FC, useState } from "react";
-import NavItems from "../../utils/NavItems";
-import { ThemeSwitcher } from "../../utils/ThemeSwitcher";
+import React, { FC, useContext, useState } from "react";
+import NavItems from "../../components/UI/NavItems/NavItems";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
+import CustomModal from "../../components/Modal/CustomModal";
+import Login from  "../../components/Auth/Login";
+import Register from "../../components/Auth/Register";
+
+import { GlobalContext } from "@/context";
 
 type Props = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
   activeItem: number;
+  route: string;
+  setRoute: (route: string) => void;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen }) => {
+const Header: FC<Props> = ({ activeItem, route,  setRoute }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const {
+    componentAuth,
+    setComponentAuth,
+  } = useContext(GlobalContext)!;
 
   if (typeof window != "undefined") {
     window.addEventListener("scroll", () => {
@@ -42,23 +50,20 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
             : "w-full border-b h-[90px] z-[80]"
         }`}
       >
-        <div className="w-[95%] 800px:w-[90%] m-auto py-2 h-full ">
+        <div className="w-[95%] 800px:w-[95%] m-auto py-2 h-full ">
           <div className="w-full h-[80px] flex items-center justify-between p-3 ">
             <div className="flex gap-2">
               <Link
                 href={"/"}
                 className={`text-[25px] font-Poppins font-[600]  leading-10 text-primary`}
               >
-                BuildRunLearning
+                RunLearning
               </Link>
             </div>
 
             <div className="flex items-center">
-                <NavItems activeItem={activeItem} isMobile={false} />
-              {/* dark and white */}
-              {/* <ThemeSwitcher/> */}
+              <NavItems activeItem={activeItem} isMobile={false} />
 
-              {/* only for mobile */}
               <div className="xl:hidden rounded-full py-2 px-4 bg-primary">
                 <HiOutlineMenuAlt3
                   size={25}
@@ -75,10 +80,10 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
             </div>
 
             <div className="hidden xl:flex  items-center gap-4">
-              <div className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins font-[600]">
+              <div onClick={() =>  setComponentAuth({showModal:true , route:"Register"})} className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins font-[600]">
                 Sign Up
               </div>
-              <div className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins  font-[600]">
+              <div onClick={() =>  setComponentAuth({showModal:true , route:"Login"})} className="cursor-pointer text-white rounded-full py-2 px-6 text-center bg-slate-500  hover:bg-primary hover:transition duration-200 ease-in font-Poppins  font-[600]">
                 Sign In
               </div>
             </div>
@@ -100,7 +105,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
                 <HiOutlineUserCircle
                   size={25}
                   className="cursor-pointer ml-5 my-2 text-black mb-4"
-                  onClick={() => setOpen(true)}
+                  // onClick={() => setShowModal(true)}
                 />
               </div>
             </div>
@@ -108,6 +113,44 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
         )}
 
       </div>
+      
+       {
+          componentAuth.route === "Login" && (
+            <>
+            {
+              componentAuth.showModal && (
+                <CustomModal 
+                open={componentAuth.showModal}
+                setOpen={componentAuth.showModal}
+                setRoute={componentAuth.route}
+                activeItem={activeItem}
+                component={Login}
+                />
+                )
+              }
+              </>  
+          )
+      } 
+
+      {
+        componentAuth.route === "Register" && (
+          <>
+          {
+            componentAuth.showModal && (
+              <CustomModal 
+              open={componentAuth.showModal}
+              setOpen={componentAuth.showModal}
+              setRoute={componentAuth.route}
+              activeItem={activeItem}
+              component={Register}
+              />
+              )
+          }
+        </>
+        )
+      }
+
+
     </div>
   );
 };

@@ -1,11 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import CatalogRilisData from "@/app/Data/CatalogRilis";
-import StarRating from "../UI/Rating";
+import CatalogRilisData from "@/data/CatalogRilis";
+import StarRating from "../../components/UI/Rating/Rating";
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import Promo from "../UI/Promo";
+import Promo from "../../components/UI/Promo/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import InfoPromo from "../UI/InfoPromo";
+import InfoPromo from "../../components/UI/ModalPromo/InfoPromo";
 
 type Props = {
   image: string;
@@ -26,28 +25,25 @@ const CatalogRilis = () => {
   const handleHover = (index: any, event: any) => { 
     setHoveredIndex(index);
     const rect = event.target.getBoundingClientRect();
-    setModalPosition({ top: rect.bottom, left: rect.left - 140 });
+    setModalPosition({ top: rect.bottom, left: rect.left - 80  });
   };
 
   return (
     <>
-      <div className=" hidden mb-20  md:flex md:px-12 lg:px-0 ">
+      <div className=" hidden mb-20  md:flex md:px-8  ">
         <div className="container">
           <div className="block">
             <div className="text-primary font-Poppins text-lg font-semibold">
               Become Freelancer
             </div>
             <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
-              Kelas BuildRunLearning Unggulan
-              <span className="block mt-[2px]">
-                Belajar Desain dan Development
-              </span>
+              Kelas RunLearning Unggulan
             </div>
           </div>
 
           <div className="flex w-full ">
             <div className="w-full mt-8">
-              <div className="w-full grid md:grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4 mx-auto  ">
+              <div className="w-full gap-4 grid grid-cols-2  md:gap-8 lg:gap-12 md:grid-cols-2 xl:grid-cols-4 mx-auto  ">
                 {CatalogRilisData &&
                   CatalogRilisData.map((i: Props, index: number) => (
                     <div key={index}>
@@ -76,7 +72,7 @@ const CatalogRilis = () => {
                           <div
                             className={`pt-2 font-Poppins ${
                               i.promo ? "text-slate-500" : "text-black"
-                            } lg:text-xs xl:text-base flex items-center`}
+                            } font-[600] xl:font-[800] flex items-center`}
                           >
                             {i.promo && (
                               <>
