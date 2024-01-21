@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
 import AosInit from "../components/Aos/AosInit";
 import GlobalState from '@/context'
+import {Toaster} from  'react-hot-toast'; 
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
             <GlobalState>
                 {children}
+                <Toaster position="top-center" reverseOrder={false} />
             </GlobalState>
 
         {/* <ThemeProvider attribute='class' defaultTheme='system' enableSystem>

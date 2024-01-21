@@ -20,6 +20,13 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+/*Chrome, safari, edge, opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+   margin: 0;
+}
+
 .hero_animation {
   background-image: linear-gradient(147.92deg, hsla(239,76%,53%,0.456) 10.41%, hsla(0, 0%, 100%, 0) 89.25%);
   animation: changeBackgroundColor 8s infinite alternate;
@@ -71,4 +78,34 @@ body {
 
 .label{
   @apply text-[16px] font-Poppins text-black;
+}
+
+.btnSubmit {
+  @apply flex flex-row w-full items-center justify-center min-h-[45px] bg-teal-600 px-6 py-4 text-lg  text-white cursor-pointer
+   font-semibold uppercase font-Poppins rounded-full;
+}
+
+@keyframes shake {
+  0%{
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
 }

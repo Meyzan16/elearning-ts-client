@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { loginFormControls } from "@/utils";
-import InputComponent from "../FormElements/InputComponent";
+import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
 
 type Interface = {
@@ -82,8 +82,7 @@ const Login = () => {
               <input
                 type="submit"
                 value="Login"
-                className="inline-flex w-full items-center justify-center bg-teal-600 px-6 py-4 text-lg mt-4
-                              text-white translate-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide rounded-full "
+                className="mt-4 btnSubmit"
                 // disabled={Object.keys(errors).length > 0}
               />
             </div>

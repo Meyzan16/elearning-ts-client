@@ -4,7 +4,7 @@ import React, { FC, useContext, useState } from "react";
 import NavItems from "../../components/UI/NavItems/NavItems";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import ModalLogin from "../../components/Modal/CustomModalLogin";
-import Login from  "../../components/Auth/Login";
+import Login from "@/components/UI/Auth/Login/Page";
 
 import { GlobalContext } from "@/context";
 
@@ -120,7 +120,6 @@ const Header: FC<Props> = ({ activeItem }) => {
                 open={componentAuth.showModal}
                 setOpen={componentAuth.showModal}
                 setRoute={componentAuth.route}
-                activeItem={activeItem}
                 component={Login}
                 />
                 )

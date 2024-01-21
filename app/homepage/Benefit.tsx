@@ -6,7 +6,7 @@ type Props = {};
 const Benefit = (props: Props) => {
   return (
     <div className="mb-20">
-      <div className=" md:px-12 xl:max-w-screen-1300px mx-auto w-full lg:px-12 ">
+      <div className=" md:px-12 xl:max-w-screen-1300px mx-auto w-full lg:px-12 text-lg gap-8">
         <div className="w-full px-4  xl:flex mx-auto">
 
           <div className=" w-full hidden xl:flex xl:justify-center lg:items-center xl:w-1/2 lg:mr-12  ">
