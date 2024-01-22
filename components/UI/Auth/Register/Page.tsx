@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AiFillGithub } from "react-icons/ai";
@@ -8,6 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 import { RegisterFormControls } from "@/utils";
 import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
+import ComponentLevelLoader from "@/components/Loader/Page";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import toast from "react-hot-toast";
 
 type Interface = {
   name: string;
@@ -25,13 +28,40 @@ const schema = Yup.object().shape({
 });
 
 const Register = () => {
-  const { componentAuth,setComponentAuth } = useContext(GlobalContext)!;
+    const {
+      setComponentAuth,
+      pageLevelLoader,
+      setPageLevelLoader,
+    } = useContext(GlobalContext)!;
+
+  const [register, {data,error,isSuccess}] = useRegisterMutation();
+
+  useEffect(() => {
+    if(isSuccess){
+      const message = data?.message || "Registaration successfully bro";  
+      toast.success(message);
+      setComponentAuth({ showModal: true, route: "Verification" });
+      setPageLevelLoader(false);
+    }
+    if(error) {
+      if("data" in error) {
+        const errorData = error as any; 
+        toast.error(errorData.data.message); 
+        setPageLevelLoader(false);
+      }
+    }
+  },[isSuccess, error])
 
   const formik = useFormik<Interface>({
     initialValues: { name: "", email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ name, email, password }) => {
-        setComponentAuth({showModal:true , route:"Verification"})
+      setPageLevelLoader(true);
+      const data = {
+        name,email,password
+      }
+      await register(data);
+
     },
   });
 
@@ -66,11 +96,17 @@ const Register = () => {
         )}
 
         <div className="w-full mt-8">
-          <input
-            type="submit"
-            value="Register"
-            className="btnSubmit mt-4"
-          />
+          <button type="submit" className="btnSubmit mt-4">
+            {pageLevelLoader === true ? (
+              <ComponentLevelLoader
+                text={"Registering"}
+                color={"#ffffff"}
+                loading={pageLevelLoader}
+              />
+            ) : (
+              "Register"
+            )}
+          </button>
         </div>
       </form>
     </>

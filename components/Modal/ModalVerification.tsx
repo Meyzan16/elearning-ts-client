@@ -14,12 +14,18 @@ type Props = {
 const ModalVerification: FC<Props> = ({open,setOpen,setRoute, component:Component}) => {
   const {
     setComponentAuth,
+    setPageLevelLoader
   } = useContext(GlobalContext)!;
+
+  const handleClose = () => {
+    setComponentAuth({ showModal: false, route: "" });
+    setPageLevelLoader(false);
+  };
 
   return (
     <Modal
         open={open}
-        onClose={() => setComponentAuth({showModal: false, route:""})}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
     >

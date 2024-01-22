@@ -1,3 +1,4 @@
+'use client';
 
 import "../styles/globals.css";
 import { Poppins } from "next/font/google";
@@ -5,6 +6,7 @@ import { Josefin_Sans } from "next/font/google";
 import AosInit from "../components/Aos/AosInit";
 import GlobalState from '@/context'
 import {Toaster} from  'react-hot-toast'; 
+import { Providers } from "./provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,11 +33,12 @@ export default function RootLayout({
         // className={`${poppins.variable} ${josefin.variable} bg-white bg-no-repeat dark:bg-gradient-to-b  dark:from-gray-900 dark:to-black duration:300`}
         className={`${poppins.variable} ${josefin.variable} bg-slate-50 bg-no-repeat`}
       >
+        <Providers>
             <GlobalState>
                 {children}
                 <Toaster position="top-center" reverseOrder={false} />
             </GlobalState>
-
+        </Providers>
         {/* <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
         </ThemeProvider> */}
       </body>

@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { loginFormControls } from "@/utils";
 import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
+import ComponentLevelLoader from "@/components/Loader/Page";
 
 type Interface = {
   email: string;
@@ -23,12 +24,14 @@ const schema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { setComponentAuth } = useContext(GlobalContext)!;
+  const { setComponentAuth, pageLevelLoader, setPageLevelLoader } =
+    useContext(GlobalContext)!;
 
   const formik = useFormik<Interface>({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
+      setPageLevelLoader(true);
       console.log({ email, password });
     },
   });
@@ -79,12 +82,21 @@ const Login = () => {
             )}
 
             <div className="w-full mt-5">
-              <input
+              <button
                 type="submit"
-                value="Login"
                 className="mt-4 btnSubmit"
                 // disabled={Object.keys(errors).length > 0}
-              />
+              >
+                {pageLevelLoader === true ? (
+                  <ComponentLevelLoader
+                    text={"Login"}
+                    color={"#ffffff"}
+                    loading={pageLevelLoader}
+                  />
+                ) : (
+                  "Login"
+                )}
+              </button>
             </div>
 
             <div className="text-center pt-6  font-Poppins text-lg text-black">
@@ -93,7 +105,6 @@ const Login = () => {
             </div>
           </form>
         </div>
-
       </div>
     </div>
   );
