@@ -3,7 +3,7 @@ import { userRegistration } from "./authSlice";
 
 type RegistrasiResponse = {
   message: string;
-  activationToken: string;
+  activationCode: string;
 };
 
 type RegistrasiData = {};
@@ -23,7 +23,7 @@ export const authApi = apiSlice.injectEndpoints({
           const result = await queryFulfilled;
           dispatch(
             userRegistration({
-              token: result.data.activationToken,
+              token: result.data.activationCode,
             })
           );
         } catch (error: any) {
@@ -31,6 +31,7 @@ export const authApi = apiSlice.injectEndpoints({
         }
       },
     }),
+    //endpoints here
     activation: builder.mutation({
       query: ({ activation_token, activation_code }) => ({
         url: "activate-user",

@@ -1,6 +1,10 @@
-import React, { FC, useRef, useState } from "react";
+import { useActivationMutation } from "@/redux/features/auth/authApi";
+import React, { FC, useContext, useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { GlobalContext } from "@/context";
 
 type Props = {
   setRoute: (route: string) => void;
@@ -14,7 +18,30 @@ type VerifyNumber = {
 };
 
 const Verification: FC<Props> = (props: Props) => {
+  const router = useRouter();
+  const { token } = useSelector((state: any) => state.auth);
+
+
+  const [activation, { isSuccess, error }] = useActivationMutation();
   const [invalidError, setInvalidError] = useState<boolean>(false);
+  const { setComponentAuth } = useContext(GlobalContext)!;
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Account activated successfully");
+      router.push("/");
+      setComponentAuth({ showModal: true, route: "Login" });
+    }
+    if (error) {
+      if ("data" in error) {
+        const errorData = error as any;
+        toast.error(errorData.data.message);
+      } else {
+        console.log("An error occured:", error);
+      }
+    }
+  }, [isSuccess, error]);
+
   const inputRefs = [
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
@@ -30,7 +57,16 @@ const Verification: FC<Props> = (props: Props) => {
   });
 
   const VerificationHandler = async () => {
-    setInvalidError(true)
+    const verificationNumber = Object.values(verifyNumber).join("");
+    if (verificationNumber.length !== 4) {
+      setInvalidError(true);
+      return;
+    }
+    console.log({token,verificationNumber});
+    await activation({
+      activation_token: token,
+      activation_code: verificationNumber,
+    });
   };
   const handleInputChange = (index: number, value: string) => {
     setInvalidError(false);
@@ -71,15 +107,10 @@ const Verification: FC<Props> = (props: Props) => {
       </div>
 
       <div className="w-full">
-          <button
-          className="mt-8 btnSubmit"
-          onClick={VerificationHandler}
-          >
-            Verify OTP
-          </button>
+        <button className="mt-8 btnSubmit" onClick={VerificationHandler}>
+          Verify OTP
+        </button>
       </div>
-
-
     </div>
   );
 };
