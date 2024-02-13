@@ -11,6 +11,9 @@ import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/Loader/Page";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
 import toast from "react-hot-toast";
+import Alert from '@mui/material/Alert';
+import BasicAlerts from "@/components/Alert/page";
+import CustomizedSnackbars from "@/components/Alert/page";
 
 type Interface = {
   name: string;
@@ -32,21 +35,23 @@ const Register = () => {
       setComponentAuth,
       pageLevelLoader,
       setPageLevelLoader,
+      openAlert,
+      setOpenAlert
     } = useContext(GlobalContext)!;
 
   const [register, {data,error,isSuccess}] = useRegisterMutation();
 
   useEffect(() => {
     if(isSuccess){
-      const message = data?.message || "Registaration successfully bro";  
-      toast.success(message);
+      const message = data?.message || "Registaration successfully";  
+      setOpenAlert({status: true, message:message, severity:"success"});
       setComponentAuth({ showModal: true, route: "Verification" });
       setPageLevelLoader(false);
     }
     if(error) {
       if("data" in error) {
         const errorData = error as any; 
-        toast.error(errorData.data.message); 
+        setOpenAlert({status: true, message:errorData.data.message, severity:"error"});
         setPageLevelLoader(false);
       }
     }
@@ -107,8 +112,18 @@ const Register = () => {
               "Register"
             )}
           </button>
+
+          
         </div>
       </form>
+
+      {
+        openAlert.status == true && (
+          <>
+            <CustomizedSnackbars />
+          </>
+        )
+      }
     </>
   );
 };

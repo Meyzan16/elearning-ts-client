@@ -7,6 +7,7 @@ import AosInit from "../components/Aos/AosInit";
 import GlobalState from '@/context'
 import {Toaster} from  'react-hot-toast'; 
 import { Providers } from "./provider";
+import { ThemeProvider } from '@mui/material/styles';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -39,8 +40,6 @@ export default function RootLayout({
                 <Toaster position="top-center" reverseOrder={false} />
             </GlobalState>
         </Providers>
-        {/* <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-        </ThemeProvider> */}
       </body>
     </html>
   );

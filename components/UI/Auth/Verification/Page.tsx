@@ -5,6 +5,7 @@ import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
+import CustomizedSnackbars from "@/components/Alert/page";
 
 type Props = {
   setRoute: (route: string) => void;
@@ -21,21 +22,29 @@ const Verification: FC<Props> = (props: Props) => {
   const router = useRouter();
   const { token } = useSelector((state: any) => state.auth);
 
-
   const [activation, { isSuccess, error }] = useActivationMutation();
   const [invalidError, setInvalidError] = useState<boolean>(false);
-  const { setComponentAuth } = useContext(GlobalContext)!;
+  const { setComponentAuth, openAlert, setOpenAlert } =
+    useContext(GlobalContext)!;
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Account activated successfully");
-      router.push("/");
-      setComponentAuth({ showModal: true, route: "Login" });
+      setOpenAlert({status: true, message:"Account activated successfully", severity:"success"});
+      setTimeout(() => {
+        router.push("/");
+        setComponentAuth({ showModal: true, route: "Login" });
+      }, 2000);
+      
     }
     if (error) {
       if ("data" in error) {
         const errorData = error as any;
-        toast.error(errorData.data.message);
+        setOpenAlert({
+          status: true,
+          message: errorData.data.message,
+          severity: "error",
+        });
+
       } else {
         console.log("An error occured:", error);
       }
@@ -62,7 +71,6 @@ const Verification: FC<Props> = (props: Props) => {
       setInvalidError(true);
       return;
     }
-    console.log({token,verificationNumber});
     await activation({
       activation_token: token,
       activation_code: verificationNumber,
@@ -79,6 +87,7 @@ const Verification: FC<Props> = (props: Props) => {
       inputRefs[index + 1].current?.focus();
     }
   };
+  
   return (
     <div className="py-8 px-4">
       <h1 className="title">Verification Your Account</h1>
@@ -111,6 +120,9 @@ const Verification: FC<Props> = (props: Props) => {
           Verify OTP
         </button>
       </div>
+
+
+
     </div>
   );
 };

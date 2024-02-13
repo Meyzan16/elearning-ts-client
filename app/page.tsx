@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import Heading from "../components/UI/Heading/Heading";
 import Header from "./homepage/Header";
 import Hero from "./homepage/Hero";
@@ -11,6 +11,8 @@ import CatalogRilis from "./homepage/CatalogRilis";
 import BannerPromo from "./homepage/BannerPromo";
 import Reviews from "./homepage/Reviews";
 import { useSpring, animated } from "@react-spring/web";
+import CustomizedSnackbars from "@/components/Alert/page";
+import { GlobalContext } from "@/context";
 
 interface Props {}
 
@@ -51,6 +53,8 @@ const Page: FC<Props> = (props) => {
 
   const [showBall, setShowBall] = useState(false);
   const [showHomePage, setShowHomePage] = useState(false);
+
+  const { openAlert } = useContext(GlobalContext)!;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -96,6 +100,14 @@ const Page: FC<Props> = (props) => {
           <Kelas />
           <CatalogRilis />
           <Reviews />
+
+          {
+            openAlert.status == true && (
+              <>
+                <CustomizedSnackbars />
+              </>
+            )
+          }
         </div>
       {/* )} */}
     </>

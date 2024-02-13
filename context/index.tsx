@@ -11,6 +11,10 @@ type ContextType = {
 
   pageLevelLoader:boolean;
   setPageLevelLoader:(loading: boolean) => void;
+
+  openAlert: any;
+  setOpenAlert: any;
+
 };
 
 export const GlobalContext = createContext<ContextType | null>(null);
@@ -25,6 +29,12 @@ export default function GlobalState({
     showModal: false,
     route: "",
   });
+  const [openAlert , setOpenAlert] = useState({
+    status:false,
+    message:"",
+    severity:"",
+  });
+
   const [pageLevelLoader, setPageLevelLoader] = useState(false);
 
   const [componentLevelLoader, setComponentLevelLoader] = useState({
@@ -42,6 +52,8 @@ export default function GlobalState({
         setComponentLevelLoader,
         pageLevelLoader,
         setPageLevelLoader,
+        openAlert , 
+        setOpenAlert
       }}
     >
       {children}

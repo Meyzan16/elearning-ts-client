@@ -1,5 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
-import { userRegistration } from "./authSlice";
+import { userLoggedIn, userRegistration } from "./authSlice";
 
 type RegistrasiResponse = {
   message: string;
@@ -10,7 +10,7 @@ type RegistrasiData = {};
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    //endpoints here
+    //endpoints registes
     register: builder.mutation<RegistrasiResponse, RegistrasiData>({
       query: (data) => ({
         url: "register",
@@ -27,11 +27,11 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          console.log(error);
+          const result  = error;
         }
       },
     }),
-    //endpoints here
+    //endpoints activation
     activation: builder.mutation({
       query: ({ activation_token, activation_code }) => ({
         url: "activate-user",
@@ -42,7 +42,33 @@ export const authApi = apiSlice.injectEndpoints({
         },
       }),
     }),
+    //endpoints login
+    login: builder.mutation({
+      query:({email,password}) => ({
+        url:"login",
+        method:"POST",
+        body:{
+          email,
+          password
+        },
+        credentials: "include" as const, //harus menyediakan cookies atau token otentikasi
+      }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(
+            userLoggedIn({
+              accessToken: result.data.accessToken,
+              user: result.data.user
+            })
+          );
+        } catch (error: any) {
+          const result  = error;
+        }
+      },
+
+    })
   }),
 });
 
-export const { useRegisterMutation, useActivationMutation } = authApi;
+export const { useRegisterMutation, useActivationMutation, useLoginMutation } = authApi;

@@ -23,8 +23,8 @@ const GuardToVerification: FC<Interface> = ({
 
   return (
     <>
-      <section className="flex gap-24">
-        <div className="lg:block hidden w-1/4">
+      <section className="flex gap-24 ">
+        <div className="lg:block hidden w-1/4 overflow-hidden">
           <img
             src={"/assets/banner_register.png"}
             alt="Banner"
@@ -32,8 +32,8 @@ const GuardToVerification: FC<Interface> = ({
           />
         </div>
 
-        <div className="w-3/4 mx-auto  lg:mx-0 lg:justify-start p-4 overflow-y-auto">
-          <div className=" max-w-screen-md px-4 mb-6">
+        <div className="w-3/4 mx-auto  lg:mx-0 lg:justify-start p-4 ">
+          <div className=" max-w-screen-md px-4 mb-6 overflow-y-auto">
             <div className="my-4">
               <div className="font-Poppins text-[38px] font-bold text-primary">
                 {Title}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AiFillGithub } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { loginFormControls } from "@/utils";
 import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/Loader/Page";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
 
 type Interface = {
   email: string;
@@ -24,21 +25,40 @@ const schema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { setComponentAuth, pageLevelLoader, setPageLevelLoader } =
-    useContext(GlobalContext)!;
+  const { setComponentAuth, pageLevelLoader, setPageLevelLoader,setOpenAlert} = useContext(GlobalContext)!;
+  const [login,{isSuccess,error,data}] = useLoginMutation();
 
   const formik = useFormik<Interface>({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
       setPageLevelLoader(true);
-      console.log({ email, password });
+      await login({email,password});
     },
   });
+
+  useEffect(() => {
+    if(isSuccess){
+      const message = data?.message || "Login successfully";  
+      setOpenAlert({status: true, message:message, severity:"success"});
+      setComponentAuth({ showModal: false, route: "" });
+      setPageLevelLoader(false);
+    }
+    if(error) {
+      if("data" in error) {
+        const errorData = error as any; 
+        setOpenAlert({status: true, message:errorData.data.message, severity:"error"});
+        setPageLevelLoader(false);
+      }
+    }
+  },[isSuccess, error])
+
 
   const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
+    <>
+   
     <div className="w-full ">
       <div className="flex">
         <div className="lg:block hidden w-1/2 ">
@@ -107,6 +127,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
