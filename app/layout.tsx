@@ -8,6 +8,7 @@ import GlobalState from '@/context'
 import {Toaster} from  'react-hot-toast'; 
 import { Providers } from "./provider";
 import { ThemeProvider } from '@mui/material/styles';
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,14 +32,15 @@ export default function RootLayout({
     <html lang="en">
       <AosInit />
       <body
-        // className={`${poppins.variable} ${josefin.variable} bg-white bg-no-repeat dark:bg-gradient-to-b  dark:from-gray-900 dark:to-black duration:300`}
         className={`${poppins.variable} ${josefin.variable} bg-slate-50 bg-no-repeat`}
       >
         <Providers>
+          <SessionProvider>
             <GlobalState>
                 {children}
                 <Toaster position="top-center" reverseOrder={false} />
             </GlobalState>
+          </SessionProvider>
         </Providers>
       </body>
     </html>

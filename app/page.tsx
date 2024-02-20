@@ -74,24 +74,13 @@ const Page: FC<Props> = (props) => {
 
   return (
     <>
-      {/* {!showHomePage ? (
-        <div
-          className="flex justify-center"
-          data-aos="zoom-in"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-        >
-          <BouncingBall show={showBall} />
-        </div>
-      ) : ( */}
-    
-        <div>
+        <div >
           <Heading
             title="E-Learning"
             description="ELearning is a platform for students to learn and get help from teachers"
             keywords="Programming, Mern , Redux , Machine Learning"
           />
-          <BannerPromo />
+          {/* <BannerPromo /> */}
           <Header activeItem={activeItem}  />
           <Hero />
           <Corporate />
@@ -99,7 +88,7 @@ const Page: FC<Props> = (props) => {
           <Benefit />
           <Kelas />
           <CatalogRilis />
-          <Reviews />
+          {/* <Reviews /> */}
 
           {
             openAlert.status == true && (
@@ -109,7 +98,6 @@ const Page: FC<Props> = (props) => {
             )
           }
         </div>
-      {/* )} */}
     </>
   );
 };

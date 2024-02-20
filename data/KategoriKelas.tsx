@@ -8,22 +8,22 @@ const KategoriKelasData:Props[] = [
     {
         "image" : "kelas_koding.svg",
         "title" : "Roadmap",
-        "subtitle" : "Alur belajar"
+        "subtitle" : "Alur belajar terbaik"
     },
     {
         "image" : "kelas_koding.svg",
         "title" : "Kelas Koding",
-        "subtitle" : "Bikin website dan aplikasi"
+        "subtitle" : "UI/UX Design"
     },
     {
         "image" : "kelas_koding.svg",
         "title" : "Soft skills",
-        "subtitle" : "Improve your business"
+        "subtitle" : "Website/Aplikasi"
     },
     {
         "image" : "kelas_koding.svg",
-        "title" : "Kelas QA/Unit Testing",
-        "subtitle" : "Perdalam Unit Testing"
+        "title" : "Big Data",
+        "subtitle" : "Data Analysis"
     },
 ]
 
