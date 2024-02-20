@@ -10,7 +10,7 @@ interface Props {
 const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
   return (
     <>
-      <div className="hidden xl:flex">
+      <div className="hidden lg:flex">
         {NavItemsData &&
           NavItemsData.map((item, index) => (
             <Link href={`${item.url}`} key={index} passHref>

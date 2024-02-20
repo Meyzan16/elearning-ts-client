@@ -10,6 +10,8 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/Loader/Page";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
+import {signIn} from "next-auth/react";
+
 
 type Interface = {
   email: string;
@@ -74,12 +76,13 @@ const Login = () => {
 
           <div className="my-6 flex justify-center  items-center gap-4">
             <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl hover:bg-primary hover:text-white cursor-pointer">
-              <FcGoogle size={30} className="cursor-pointer mr-2" />
+              <FcGoogle size={30} className="cursor-pointer mr-2" onClick={() => signIn("google")} />
             </div>
             <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl  hover:bg-primary hover:text-white cursor-pointer">
               <AiFillGithub
                 size={30}
                 className="cursor-pointer text-black ml-2"
+                onClick={() => signIn("github")} 
               />
             </div>
           </div>

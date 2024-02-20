@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Register from "./Register/Page";
 import React, { FC, useContext, useState } from "react";
@@ -19,12 +19,12 @@ const GuardToVerification: FC<Interface> = ({
   titleForm,
   type,
 }) => {
-    const { componentAuth,setComponentAuth } = useContext(GlobalContext)!;
+  const { componentAuth, setComponentAuth } = useContext(GlobalContext)!;
 
   return (
     <>
       <section className="flex gap-24 ">
-        <div className="lg:block hidden w-1/4 overflow-hidden">
+        <div className="lg:block hidden w-1/4">
           <img
             src={"/assets/banner_register.png"}
             alt="Banner"
@@ -48,29 +48,29 @@ const GuardToVerification: FC<Interface> = ({
               <div className="p-6 sm:p-12">
                 <div className="w-full">
                   <h1 className="title">{titleForm}</h1>
-                  {type === "register" && <Register />}
+                  {type === "register" && (
+                    <div className="overflow-y-auto max-h-[calc(100vh-200px)]">
+                      <Register />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {
-          componentAuth.route === "Verification" && (
-            <>
-            {
-              componentAuth.showModal && (
-                <ModalVerification 
+        {componentAuth.route === "Verification" && (
+          <>
+            {componentAuth.showModal && (
+              <ModalVerification
                 open={componentAuth.showModal}
                 setOpen={componentAuth.showModal}
                 setRoute={componentAuth.route}
                 component={Verification}
-                />
-                )
-              }
-              </>  
-          )
-      } 
+              />
+            )}
+          </>
+        )}
       </section>
     </>
   );

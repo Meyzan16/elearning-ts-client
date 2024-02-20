@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
 import CustomizedSnackbars from "@/components/Alert/page";
+import ComponentLevelLoader from "@/components/Loader/Page";
 
 type Props = {
   setRoute: (route: string) => void;
@@ -24,17 +25,25 @@ const Verification: FC<Props> = (props: Props) => {
 
   const [activation, { isSuccess, error }] = useActivationMutation();
   const [invalidError, setInvalidError] = useState<boolean>(false);
-  const { setComponentAuth, openAlert, setOpenAlert } =
-    useContext(GlobalContext)!;
+  const {
+    pageLevelLoader,
+    setPageLevelLoader,
+    setComponentAuth,
+    openAlert,
+    setOpenAlert,
+  } = useContext(GlobalContext)!;
 
   useEffect(() => {
     if (isSuccess) {
-      setOpenAlert({status: true, message:"Account activated successfully", severity:"success"});
+      setOpenAlert({
+        status: true,
+        message: "Account activated, You will be redirected to the login page",
+        severity: "success",
+      });
       setTimeout(() => {
         router.push("/");
         setComponentAuth({ showModal: true, route: "Login" });
-      }, 2000);
-      
+      }, 3000);
     }
     if (error) {
       if ("data" in error) {
@@ -44,7 +53,6 @@ const Verification: FC<Props> = (props: Props) => {
           message: errorData.data.message,
           severity: "error",
         });
-
       } else {
         console.log("An error occured:", error);
       }
@@ -66,28 +74,32 @@ const Verification: FC<Props> = (props: Props) => {
   });
 
   const VerificationHandler = async () => {
+    setPageLevelLoader(true);
     const verificationNumber = Object.values(verifyNumber).join("");
     if (verificationNumber.length !== 4) {
       setInvalidError(true);
+      setPageLevelLoader(false);
       return;
     }
     await activation({
       activation_token: token,
       activation_code: verificationNumber,
     });
+    setPageLevelLoader(false);
   };
+
   const handleInputChange = (index: number, value: string) => {
     setInvalidError(false);
     const newVerifyNumber = { ...verifyNumber, [index]: value };
     setVerifyNumber(newVerifyNumber);
-
+    
     if (value === "" && index > 0) {
       inputRefs[index - 1].current?.focus();
     } else if (value.length === 1 && index < 3) {
       inputRefs[index + 1].current?.focus();
     }
   };
-  
+
   return (
     <div className="py-8 px-4">
       <h1 className="title">Verification Your Account</h1>
@@ -117,12 +129,17 @@ const Verification: FC<Props> = (props: Props) => {
 
       <div className="w-full">
         <button className="mt-8 btnSubmit" onClick={VerificationHandler}>
-          Verify OTP
+          {pageLevelLoader === true ? (
+            <ComponentLevelLoader
+              text={"Verify OTP"}
+              color={"#ffffff"}
+              loading={pageLevelLoader}
+            />
+          ) : (
+            "Verify OTP"
+          )}
         </button>
       </div>
-
-
-
     </div>
   );
 };
