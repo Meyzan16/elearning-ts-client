@@ -7,8 +7,9 @@ import AosInit from "../components/Aos/AosInit";
 import GlobalState from '@/context'
 import {Toaster} from  'react-hot-toast'; 
 import { Providers } from "./provider";
-import { ThemeProvider } from '@mui/material/styles';
 import { SessionProvider } from "next-auth/react";
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import { Loading } from "@/components/Loading/page";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -37,12 +38,22 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             <GlobalState>
-                {children}
-                <Toaster position="top-center" reverseOrder={false} />
+                <Custom>{children}</Custom>
             </GlobalState>
           </SessionProvider>
         </Providers>
       </body>
     </html>
   );
+}
+
+const Custom: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const {isLoading} = useLoadUserQuery({});
+  return (
+    <>
+    {
+      isLoading ? <Loading /> : <>{children}</>
+    }
+    </>
+  )
 }

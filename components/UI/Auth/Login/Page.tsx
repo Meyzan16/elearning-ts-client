@@ -10,8 +10,8 @@ import InputComponent from "@/components/FormElements/InputComponent";
 import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/Loader/Page";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import {signIn} from "next-auth/react";
-
+import { signIn } from "next-auth/react";
+import CustomizedSnackbars from "@/components/Alert/page";
 
 type Interface = {
   email: string;
@@ -27,109 +27,127 @@ const schema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { setComponentAuth, pageLevelLoader, setPageLevelLoader,setOpenAlert} = useContext(GlobalContext)!;
-  const [login,{isSuccess,error,data}] = useLoginMutation();
+  const {
+    setComponentAuth,
+    pageLevelLoader,
+    setPageLevelLoader,
+    setOpenAlert,
+    openAlert,
+  } = useContext(GlobalContext)!;
+  const [login, { isSuccess, error, data }] = useLoginMutation();
 
   const formik = useFormik<Interface>({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
       setPageLevelLoader(true);
-      await login({email,password});
+      await login({ email, password });
     },
   });
 
   useEffect(() => {
-    if(isSuccess){
-      const message = data?.message || "Login successfully";  
-      setOpenAlert({status: true, message:message, severity:"success"});
+    if (isSuccess) {
+      const message = data?.message || "Login successfully";
+      setOpenAlert({ status: true, message: message, severity: "success" });
       setComponentAuth({ showModal: false, route: "" });
       setPageLevelLoader(false);
     }
-    if(error) {
-      if("data" in error) {
-        const errorData = error as any; 
-        setOpenAlert({status: true, message:errorData.data.message, severity:"error"});
+    if (error) {
+      if ("data" in error) {
+        const errorData = error as any;
+        setOpenAlert({
+          status: true,
+          message: errorData.data.message,
+          severity: "error",
+        });
         setPageLevelLoader(false);
       }
     }
-  },[isSuccess, error])
-
+  }, [isSuccess, error]);
 
   const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
     <>
-   
-    <div className="w-full ">
-      <div className="flex">
-        <div className="lg:block hidden w-1/2 ">
-          <img
-            src={"/assets/banner_login.png"}
-            alt="Banner"
-            className="w-full h-full object-cover rounded-l-[40px]"
-          />
-        </div>
-
-        <div className="lg:w-1/2 w-full px-12 py-12 mx-auto lg:mx-0 ">
-          <h1 className="title">Login</h1>
-
-          <div className="my-6 flex justify-center  items-center gap-4">
-            <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl hover:bg-primary hover:text-white cursor-pointer">
-              <FcGoogle size={30} className="cursor-pointer mr-2" onClick={() => signIn("google")} />
-            </div>
-            <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl  hover:bg-primary hover:text-white cursor-pointer">
-              <AiFillGithub
-                size={30}
-                className="cursor-pointer text-black ml-2"
-                onClick={() => signIn("github")} 
-              />
-            </div>
+      <div className="w-full ">
+        <div className="flex">
+          <div className="lg:block hidden w-1/2 ">
+            <img
+              src={"/assets/banner_login.png"}
+              alt="Banner"
+              className="w-full h-full object-cover rounded-l-[40px]"
+            />
           </div>
 
-          <form onSubmit={handleSubmit}>
-            {loginFormControls.map((item, index) =>
-              item.componentType === "input" ? (
-                <InputComponent
-                  key={index}
-                  id={item.id}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                  type={item.type}
-                  value={values[item.id]}
-                  onChange={handleChange}
-                  errors={touched[item.id] && errors[item.id]}
-                  touched={touched[item.id]}
+          <div className="lg:w-1/2 w-full px-12 py-12 mx-auto lg:mx-0 ">
+            <h1 className="title">Login</h1>
+
+            <div className="my-6 flex justify-center  items-center gap-4">
+              <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl hover:bg-primary hover:text-white cursor-pointer">
+                <FcGoogle
+                  size={30}
+                  className="cursor-pointer mr-2"
+                  onClick={() => signIn("google")}
                 />
-              ) : null
-            )}
+              </div>
+              <div className="w-full py-3 flex justify-center items-center border-2 border-primary rounded-xl  hover:bg-primary hover:text-white cursor-pointer">
+                <AiFillGithub
+                  size={30}
+                  className="cursor-pointer text-black ml-2"
+                  onClick={() => signIn("github")}
+                />
+              </div>
+            </div>
 
-            <div className="w-full mt-5">
-              <button
-                type="submit"
-                className="mt-4 btnSubmit"
-                // disabled={Object.keys(errors).length > 0}
-              >
-                {pageLevelLoader === true ? (
-                  <ComponentLevelLoader
-                    text={"Login"}
-                    color={"#ffffff"}
-                    loading={pageLevelLoader}
+            <form onSubmit={handleSubmit}>
+              {loginFormControls.map((item, index) =>
+                item.componentType === "input" ? (
+                  <InputComponent
+                    key={index}
+                    id={item.id}
+                    label={item.label}
+                    placeholder={item.placeholder}
+                    type={item.type}
+                    value={values[item.id]}
+                    onChange={handleChange}
+                    errors={touched[item.id] && errors[item.id]}
+                    touched={touched[item.id]}
                   />
-                ) : (
-                  "Login"
-                )}
-              </button>
-            </div>
+                ) : null
+              )}
 
-            <div className="text-center pt-6  font-Poppins text-lg text-black">
-              Not have your account ?{" "}
-              <span className="text-primary pl-1 cursor-pointer">Register</span>
-            </div>
-          </form>
+              <div className="w-full mt-5">
+                <button
+                  type="submit"
+                  className="mt-4 btnSubmit"
+                  // disabled={Object.keys(errors).length > 0}
+                >
+                  {pageLevelLoader === true ? (
+                    <ComponentLevelLoader
+                      text={"Login"}
+                      color={"#ffffff"}
+                      loading={pageLevelLoader}
+                    />
+                  ) : (
+                    "Login"
+                  )}
+                </button>
+              </div>
+
+              <div className="text-center pt-6  font-Poppins text-lg text-black">
+                Not have your account ?{" "}
+                <span className="text-primary pl-1 cursor-pointer">
+                  Register
+                </span>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+
+      {openAlert.status == true && (
+          <CustomizedSnackbars />
+      )}
     </>
   );
 };

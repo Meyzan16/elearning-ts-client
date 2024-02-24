@@ -28,7 +28,7 @@ interface Props {
       transitionDuration={{ enter: 200, exit: 300 }}
       className='mt-16'
       >
-        <Alert
+        <Alert 
           onClose={handleClose}
           style={{ 
             fontSize: '1.25rem', 
@@ -37,7 +37,7 @@ interface Props {
             display: 'flex', 
             alignItems: 'center', 
             borderRadius: '20px',
-            maxWidth: '100vw' // Ubah ke '100vw' agar sesuai dengan max-w-screen-xl
+            maxWidth: '100vw', // Ubah ke '100vw' agar sesuai dengan max-w-screen-xl
           }}
           severity={openAlert.severity}
           variant="filled"
