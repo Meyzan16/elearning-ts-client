@@ -4,7 +4,7 @@ import KategoriKelasData from "@/data/KategoriKelas";
 
 const MenuKelas = () => {
   return (
-    <section className="md:mb-20 mt-6 md:flex md:px-12 lg:px-8">
+    <section className=" mt-6 md:mb-20 md:flex md:px-12 lg:px-8">
       <div className="container">
         <div className="block">
      
