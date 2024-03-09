@@ -85,6 +85,12 @@ input::-webkit-inner-spin-button {
    font-semibold uppercase font-Poppins rounded-full;
 }
 
+.btnSubmitMobile {
+  @apply flex w-full items-center justify-center bg-teal-600 px-4 py-2 text-base text-white cursor-pointer
+   font-semibold uppercase font-Poppins rounded-full;
+}
+
+
 @keyframes shake {
   0%{
     transform: translateX(0);

@@ -1,13 +1,12 @@
 import Link from "next/link";
 import React, { FC } from "react";
-import NavItemsData from "@/data/NavItems";
+import { NavItemsData, usersNavOptions } from "@/data/NavItems";
 
 interface Props {
-  activeItem: number;
   isMobile: boolean;
 }
 
-const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
+const NavItems: FC<Props> = ({ isMobile }) => {
   return (
     <>
       <div className="hidden lg:flex">
@@ -15,11 +14,7 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
           NavItemsData.map((item, index) => (
             <Link href={`${item.url}`} key={index} passHref>
               <span
-                className={`${
-                  activeItem === index
-                    ? " text-primary"
-                    : " text-black"
-                } text-[18px] px-6 font-Poppins font-[600] `}
+                className="text-black text-[18px] px-6 font-Poppins font-[600]"
               >
                 {item.name}
               </span>
@@ -28,31 +23,21 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
       </div>
 
       {isMobile && (
-        <div className="xl:hidden mt-5">
-          <div className="w-full text-center py-6" >
-            <Link
-              href={"/"}
-              className={`text-[25px] font-Poppins font-[500] text-black `}
-            >
-              E-Learning
-            </Link>
-          </div>
-          {NavItemsData &&
-            NavItemsData.map((item, index) => (
-              <>
+        <div className="xl:hidden">
+          
+          {usersNavOptions &&
+            usersNavOptions.map((item, index) => (
+              <div key={index} className="mb-2">
                 <Link href="/" passHref>
                   <span
-                    className={`${
-                      activeItem === index
-                        ? " text-primary"
-                        : " text-black"
-                    } block py-5 text-[18px] px-6 font-Poppins font-[600] `}
+                      className="text-slate-600 text-[14px] font-Poppins font-semibold cursor-pointer"
                   >
                     {item.name}
                   </span>
                 </Link>
-              </>
+              </div>
             ))}
+          
         </div>
       )}
     </>

@@ -16,11 +16,8 @@ import ModalSidebar from "@/components/Modal/ModalSidebar";
 import { SidebarMobile } from "@/components/sidebar/page";
 import ModalAuth from "@/components//Modal/ModalAuth";
 
-type Props = {
-  activeItem: number;
-};
 
-const Header: FC<Props> = ({ activeItem }) => {
+const Header = () => {
   const [active, setActive] = useState(false);
 
   const {
@@ -85,7 +82,7 @@ const Header: FC<Props> = ({ activeItem }) => {
                   </Link>
                 </div>
 
-                <NavItems activeItem={activeItem} isMobile={false} />
+                <NavItems isMobile={false} />
 
                 <div className="lg:hidden flex justify-between items-center flex-wrap w-full">
                   <div className="flex gap-2">

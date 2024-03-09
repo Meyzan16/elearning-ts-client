@@ -32,7 +32,7 @@ const ModalSidebar: FC<Props> = ({ component: Component }) => {
       >
         <Slide direction="up" in={openSidebar.show} mountOnEnter unmountOnExit>
           <Box
-            className={`md:hidden fixed bottom-0 left-0 right-0 top-[20%] -translate-y-1/2 bg-white shadow-lg rounded-t-[50px] p-4 transform  ${
+            className={`md:hidden fixed bottom-0 left-0 right-0 top-[15%] -translate-y-1/2 bg-white shadow-lg rounded-t-[50px] p-4 transform  ${
               openSidebar.show ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
             }`}
           >
