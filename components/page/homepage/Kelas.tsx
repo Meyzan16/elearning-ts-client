@@ -1,15 +1,13 @@
-"use client";
 import Image from "next/image";
 import Data from "@/data/Data";
 import { useMediaQuery } from "react-responsive";
 
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Import Swiper styles
-import 'swiper/css/autoplay'; // Import Swiper autoplay styles
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css"; // Import Swiper styles
+import "swiper/css/autoplay"; // Import Swiper autoplay styles
 
 import { useState } from "react";
-
 
 const Kelas = () => {
   const [swiper, setSwiper] = useState<any>(null);
@@ -26,7 +24,6 @@ const Kelas = () => {
     }
   };
 
-
   const isLG = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
   const isXL = useMediaQuery({ minWidth: 1280 });
 
@@ -34,7 +31,7 @@ const Kelas = () => {
   const slidesPerView = isLG ? 3 : isXL ? 5 : 2;
 
   return (
-    <div className="mb-20 hidden lg:flex ">
+    <div className="mb-20 hidden md:flex ">
       <div className=" w-full items-center justify-center ">
         <div className="flex flex-col  gap-8 w-full justify-center items-center">
           <div className="text-center">
@@ -69,9 +66,11 @@ const Kelas = () => {
                 >
                   <figure className="">
                     <Image
-                      src={require(`../../public/assets/skills/${i.image}`)}
+                      src={`/assets/skills/${i.image}`}
                       alt={`${i.title}`}
                       className="w-16"
+                      width={100}
+                      height={100}
                     />
                   </figure>
                   <h5
@@ -108,9 +107,11 @@ const Kelas = () => {
                 >
                   <figure className="">
                     <Image
-                      src={require(`../../public/assets/skills/${i.image}`)}
+                      src={`/assets/skills/${i.image}`}
                       alt={`${i.title}`}
                       className="w-16"
+                      width={100}
+                      height={100}
                     />
                   </figure>
                   <h5

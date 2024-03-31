@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react'
 import Image from 'next/image'
+import gojek from '@/public/assets/gojek.svg';
 
 const Corporate = () => {
   return (
@@ -10,7 +13,7 @@ const Corporate = () => {
                        data-aos="zoom-in"
                        data-aos-duration="1000"
                        data-aos-delay="300"
-                    src={require("../../public/assets/gojek.svg")}
+                    src={gojek}
                     alt="gojek"
                 />
             </div>

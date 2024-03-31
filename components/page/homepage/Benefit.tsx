@@ -1,5 +1,9 @@
+"use client"
 import Image from "next/image";
 import React from "react";
+import benefit from '@/public/assets/benefit.png';
+import ic_check from '@/public/assets/ic_check.svg';
+
 
 type Props = {};
 
@@ -11,7 +15,7 @@ const Benefit = (props: Props) => {
           <div className="w-full px-4  xl:flex mx-auto">
             <div className=" w-full hidden xl:flex xl:justify-center lg:items-center xl:w-1/2 lg:mr-12  ">
               <Image
-                src={require("../../public/assets/benefit.png")}
+                src={benefit}
                 alt=""
                 className="object-contain xl:max-w-3xl  md:max-w-xl  w-full mx-auto h-[auto]"
               />
@@ -31,7 +35,7 @@ const Benefit = (props: Props) => {
               <div className="pt-4">
                 <div className="flex justify-start items-center gap-2">
                   <Image
-                    src={require("../../public/assets/ic_check.svg")}
+                    src={ic_check}
                     alt="ischeck"
                   />
                   <p className="font-Poppins leading-7 text-slate-600">
@@ -41,7 +45,7 @@ const Benefit = (props: Props) => {
 
                 <div className="flex justify-start items-center gap-2 mt-4">
                   <Image
-                    src={require("../../public/assets/ic_check.svg")}
+                    src={ic_check}
                     alt="ischeck"
                   />
                   <p className="font-Poppins leading-7 text-slate-600">
@@ -50,7 +54,7 @@ const Benefit = (props: Props) => {
                 </div>
                 <div className="flex justify-start items-center gap-2 mt-4">
                   <Image
-                    src={require("../../public/assets/ic_check.svg")}
+                    src={ic_check}
                     alt="ischeck"
                   />
                   <p className="font-Poppins leading-7 text-slate-600">
@@ -59,7 +63,7 @@ const Benefit = (props: Props) => {
                 </div>
                 <div className="flex justify-start items-center gap-2 mt-4">
                   <Image
-                    src={require("../../public/assets/ic_check.svg")}
+                    src={ic_check}
                     alt="ischeck"
                   />
                   <p className="font-Poppins leading-7 text-slate-600">
@@ -68,7 +72,7 @@ const Benefit = (props: Props) => {
                 </div>
                 <div className="flex justify-start items-center gap-2 mt-4">
                   <Image
-                    src={require("../../public/assets/ic_check.svg")}
+                    src={ic_check}
                     alt="ischeck"
                   />
                   <p className="font-Poppins leading-7 text-slate-600">

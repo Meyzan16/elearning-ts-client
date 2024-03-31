@@ -18,6 +18,7 @@ export const authApi = apiSlice.injectEndpoints({
         body: data,
         credentials: "include" as const,
       }),
+      //respons dari server setelah permintaan berhasil dikirim
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
@@ -55,7 +56,7 @@ export const authApi = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
-          const result = await queryFulfilled;
+          const result = await queryFulfilled; // hasil dari promise yang dikirimkan
           dispatch(
             userLoggedIn({
               accessToken: result.data.accessToken,
@@ -63,7 +64,7 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          const result  = error;
+          return error;
         }
       },
     }),
@@ -75,7 +76,7 @@ export const authApi = apiSlice.injectEndpoints({
         body:{
           email,
           name,
-          avatar
+          avatar,
         },
         credentials: "include" as const, //berfungsi untuk jika BE menyediakan cookies atau token otentikasi
       }),
@@ -89,7 +90,7 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          const result  = error;
+          console.log(error);
         }
       },
     }),

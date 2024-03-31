@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useContext } from "react";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import avatar from "../../public/assets/avatar.svg";
-import NavItems from "../UI/NavItems/NavItems";
+import avatar from "@/public/assets/avatar.svg";
+import NavItems from "../../UI/NavItems/NavItems";
 
 interface Props {}
 

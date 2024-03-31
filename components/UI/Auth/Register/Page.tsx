@@ -5,15 +5,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { RegisterFormControls } from "@/utils";
-import InputComponent from "@/components/FormElements/InputComponent";
+import { RegisterFormControls } from "@/utils/auth";
+import InputComponent from "@/components/FormElements/InputComponent/InputComponent";
 import { GlobalContext } from "@/context";
-import ComponentLevelLoader from "@/components/Loader/Page";
+import ComponentLevelLoader from "@/components/common/Loader/Loader";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
-import Alert from '@mui/material/Alert';
-import BasicAlerts from "@/components/Alert/page";
-import CustomizedSnackbars from "@/components/Alert/page";
 
 type Interface = {
   name: string;
@@ -33,9 +29,8 @@ const schema = Yup.object().shape({
 const Register = () => {
     const {
       setComponentAuth,
-      pageLevelLoader,
-      setPageLevelLoader,
-      openAlert,
+      componentLevelLoader,
+      setComponentLevelLoader,
       setOpenAlert
     } = useContext(GlobalContext)!;
 
@@ -46,13 +41,13 @@ const Register = () => {
       const message = data?.message || "Registaration successfully";  
       setOpenAlert({status: true, message:message, severity:"success"});
       setComponentAuth({ showModal: true, route: "Verification" });
-      setPageLevelLoader(false);
+      setComponentLevelLoader({loading:false,  id:"register"});
     }
     if(error) {
       if("data" in error) {
         const errorData = error as any; 
         setOpenAlert({status: true, message:errorData.data.message, severity:"error"});
-        setPageLevelLoader(false);
+        setComponentLevelLoader({loading:false,  id:"register"});
       }
     }
   },[isSuccess, error])
@@ -61,7 +56,7 @@ const Register = () => {
     initialValues: { name: "", email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ name, email, password }) => {
-      setPageLevelLoader(true);
+      setComponentLevelLoader({loading:true,  id:"register"});
       const data = {
         name,email,password
       }
@@ -102,11 +97,11 @@ const Register = () => {
 
         <div className="w-full mt-8">
           <button type="submit" className="btnSubmit mt-4">
-            {pageLevelLoader === true ? (
+            {componentLevelLoader.loading === true && componentLevelLoader.id === "register" ? (
               <ComponentLevelLoader
                 text={"Registering"}
                 color={"#ffffff"}
-                loading={pageLevelLoader}
+                loading={componentLevelLoader.loading}
               />
             ) : (
               "Register"
@@ -117,13 +112,7 @@ const Register = () => {
         </div>
       </form>
 
-      {
-        openAlert.status == true && (
-          <>
-            <CustomizedSnackbars />
-          </>
-        )
-      }
+      
     </>
   );
 };

@@ -5,13 +5,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { loginFormControls } from "@/utils";
-import InputComponent from "@/components/FormElements/InputComponent";
+import { loginFormControls } from "@/utils/auth";
+import InputComponent from "@/components/FormElements/InputComponent/InputComponent";
 import { GlobalContext } from "@/context";
-import ComponentLevelLoader from "@/components/Loader/Page";
+import ComponentLevelLoader from "@/components/common/Loader/Loader";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { signIn } from "next-auth/react";
-import CustomizedSnackbars from "@/components/Alert/page";
 
 type Interface = {
   email: string;
@@ -34,6 +33,7 @@ const Login = () => {
     setOpenAlert,
     openAlert,
   } = useContext(GlobalContext)!;
+  
   const [login, { isSuccess, error, data }] = useLoginMutation();
 
   const formik = useFormik<Interface>({
@@ -47,13 +47,13 @@ const Login = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      const message = data?.message || "Login successfully";
+      const message = data.message || "Login successfully";
       setOpenAlert({ status: true, message: message, severity: "success" });
-      setComponentAuth({ showModal: false, route: "" });
       setPageLevelLoader(false);
+      setComponentAuth({ showModal: false, route: "" });
     }
     if (error) {
-      if ("data" in error) {
+      if ("data" in error) { //jika ada data di dalam objeck error
         const errorData = error as any;
         setOpenAlert({
           status: true,
@@ -144,10 +144,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-
-      {openAlert.status == true && (
-          <CustomizedSnackbars />
-      )}
     </>
   );
 };

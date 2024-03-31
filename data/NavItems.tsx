@@ -60,16 +60,11 @@ export const usersNavOptions: Props[]  = [
 },
 {
   Id: 6,
-  name: "My Notification",
-  url: "/admin-view/add-product",
-},
-{
-  Id: 7,
   name: "My settings",
   url: "/admin-view/add-product",
 },
 {
-  Id: 8,
+  Id: 7,
   name: "Logout",
   url: "/admin-view/add-product",
 },

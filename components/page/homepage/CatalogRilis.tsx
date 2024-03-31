@@ -1,10 +1,12 @@
+'use client';
+
 import React, { FC, useEffect, useRef, useState } from "react";
 import CatalogRilisData from "@/data/CatalogRilis";
-import StarRating from "../../components/UI/Rating/Rating";
+import StarRating from "../../UI/Rating/Rating";
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import Promo from "../../components/UI/Promo/Promo";
+import Promo from "../../UI/Promo/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import InfoPromo from "../../components/UI/ModalPromo/InfoPromo";
+import InfoPromo from "../../UI/ModalPromo/InfoPromo";
 
 type Props = {
   image: string;
@@ -16,7 +18,7 @@ type Props = {
   countUser: number;
 };
 
-const CatalogRilisAfterLogin = () => {
+const CatalogRilis = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -30,23 +32,20 @@ const CatalogRilisAfterLogin = () => {
 
   return (
     <>
-      <div className=" hidden mb-20  md:flex md:px-8  mt-14">
+      <div className=" hidden mb-20  md:flex md:px-8  ">
         <div className="container">
           <div className="block">
             <div className="text-primary font-Poppins text-lg font-semibold">
-              Our Recommended
+              Become Freelancer
             </div>
             <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
-              Pelajari Skills Baru
-              <span className="block">
-              Sesuai Dengan Minatmu
-              </span>
+              Kelas RunLearning Unggulan
             </div>
           </div>
 
           <div className="flex w-full ">
             <div className="w-full mt-8">
-              <div className="w-full gap-4 grid grid-cols-2  md:gap-6 lg:gap-10 md:grid-cols-2 xl:grid-cols-4 mx-auto  ">
+              <div className="w-full gap-4 grid grid-cols-2  md:gap-8 lg:gap-12 md:grid-cols-2 xl:grid-cols-4 mx-auto  ">
                 {CatalogRilisData &&
                   CatalogRilisData.map((i: Props, index: number) => (
                     <div key={index}>
@@ -136,4 +135,4 @@ const CatalogRilisAfterLogin = () => {
   );
 };
 
-export default CatalogRilisAfterLogin;
+export default CatalogRilis;

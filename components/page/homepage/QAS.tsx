@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import React, { useContext } from "react";
 import { IoClose } from "react-icons/io5";
@@ -5,7 +7,7 @@ import avatar from "../../public/assets/avatar.svg";
 import { GlobalContext } from "@/context";
 import { useSelector } from "react-redux";
 import Link from "next/link";
-
+import ic_konsultasi from '@/public/assets/ic_konsultasi.svg';
 interface Props {}
 
 export const QAS = (props: Props) => {
@@ -18,7 +20,7 @@ export const QAS = (props: Props) => {
             <div className="flex items-center gap-4">
               <div>
                 <Image
-              src={require("../../public/assets/ic_konsultasi.svg")}
+                  src={ic_konsultasi}
                   alt="ImageCaption"
                   className="w-[50px] h-[50px] rounded-full cursor-pointer"
                 />

@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
 import "../styles/globals.css";
 import { Poppins } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
-import AosInit from "../components/Aos/AosInit";
-import GlobalState from '@/context'
-import {Toaster} from  'react-hot-toast'; 
+import AosInit from "../components/common/Aos/AosInit";
+import GlobalState from "@/context";
+import { Toaster } from "react-hot-toast";
 import { Providers } from "./provider";
 import { SessionProvider } from "next-auth/react";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import { Loading } from "@/components/Loading/page";
+import { Loading } from "@/components/common/Loading/Loading";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,7 +22,6 @@ const josefin = Josefin_Sans({
   weight: ["400", "500", "600", "700"],
   variable: "--font-Josefin",
 });
-
 
 export default function RootLayout({
   children,
@@ -38,7 +37,7 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             <GlobalState>
-                <Custom>{children}</Custom>
+              <Custom>{children}</Custom>
             </GlobalState>
           </SessionProvider>
         </Providers>
@@ -47,13 +46,7 @@ export default function RootLayout({
   );
 }
 
-const Custom: React.FC<{children: React.ReactNode}> = ({children}) => {
-  const {isLoading} = useLoadUserQuery({});
-  return (
-    <>
-    {
-      isLoading ? <Loading /> : <>{children}</>
-    }
-    </>
-  )
-}
+const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isLoading } = useLoadUserQuery({});
+  return isLoading ? <Loading /> : <>{children}</>;
+};

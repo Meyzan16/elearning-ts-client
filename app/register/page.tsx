@@ -1,17 +1,31 @@
-import GuardToVerification from '@/components/UI/Auth/GuardToVerification';
-import React from 'react'
+'use client';
 
-type Props = {}
+import AlertComponents from "@/components/common/Alert/AlertComponents";
+import GuardToVerification from "@/components/UI/Auth/GuardToVerification";
+import { GlobalContext } from "@/context";
+import React, { useContext } from "react";
+
+type Props = {};
 
 const Page = (props: Props) => {
+  const {openAlert} = useContext(GlobalContext)!
+
   return (
-    <GuardToVerification 
-      Title='New Account'
-      subTitle='Lengkapi form di bawah dengan'
-      titleForm='Register'
-      type='register'
-    />
-  )
-}
+    <>
+      <GuardToVerification
+        Title="New Account"
+        subTitle="Lengkapi form di bawah dengan"
+        titleForm="Register"
+        type="register"
+      />
+
+      {openAlert.status == true && (
+        <>
+          <AlertComponents />
+        </>
+      )}
+    </>
+  );
+};
 
 export default Page;

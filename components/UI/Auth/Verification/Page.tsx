@@ -5,8 +5,7 @@ import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
-import CustomizedSnackbars from "@/components/Alert/page";
-import ComponentLevelLoader from "@/components/Loader/Page";
+import ComponentLevelLoader from "@/components/common/Loader/Loader";
 
 type Props = {
   setRoute: (route: string) => void;
@@ -26,10 +25,9 @@ const Verification: FC<Props> = (props: Props) => {
   const [activation, { isSuccess, error }] = useActivationMutation();
   const [invalidError, setInvalidError] = useState<boolean>(false);
   const {
-    pageLevelLoader,
-    setPageLevelLoader,
+    componentLevelLoader,
+    setComponentLevelLoader,
     setComponentAuth,
-    openAlert,
     setOpenAlert,
   } = useContext(GlobalContext)!;
 
@@ -74,18 +72,18 @@ const Verification: FC<Props> = (props: Props) => {
   });
 
   const VerificationHandler = async () => {
-    setPageLevelLoader(true);
+    setComponentLevelLoader({loading:true, id:"verif" });
     const verificationNumber = Object.values(verifyNumber).join("");
     if (verificationNumber.length !== 4) {
       setInvalidError(true);
-      setPageLevelLoader(false);
+      setComponentLevelLoader({loading:false, id:"verif" });
       return;
     }
     await activation({
       activation_token: token,
       activation_code: verificationNumber,
     });
-    setPageLevelLoader(false);
+    setComponentLevelLoader({loading:false, id:"verif" });
   };
 
   const handleInputChange = (index: number, value: string) => {
@@ -129,11 +127,11 @@ const Verification: FC<Props> = (props: Props) => {
 
       <div className="w-full">
         <button className="mt-8 btnSubmit" onClick={VerificationHandler}>
-          {pageLevelLoader === true ? (
+          {componentLevelLoader.loading === true && componentLevelLoader.id === "verif" ? (
             <ComponentLevelLoader
               text={"Verify OTP"}
               color={"#ffffff"}
-              loading={pageLevelLoader}
+              loading={componentLevelLoader.loading}
             />
           ) : (
             "Verify OTP"

@@ -1,6 +1,9 @@
+'use client'
+
 import React from "react";
 import Image from "next/image";
 import KategoriKelasData from "@/data/KategoriKelas";
+
 
 const MenuKelas = () => {
   return (
@@ -45,9 +48,11 @@ const MenuKelas = () => {
                     >
                       <figure className="flex items-center justify-start pt-4 pl-4 ">
                         <Image
-                          src={require(`../../public/assets/${item.image}`)}
+                         src={`/assets/${item.image}`}
                           alt=""
                           className="w-14"
+                          width={100}
+                          height={100}
                         />
                       </figure>
 
