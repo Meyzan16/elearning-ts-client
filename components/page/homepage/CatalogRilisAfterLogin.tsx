@@ -7,6 +7,7 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import Promo from "../../UI/Promo/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import InfoPromo from "../../UI/ModalPromo/InfoPromo";
+import Image from "next/image";
 
 type Props = {
   image: string;
