@@ -3,7 +3,7 @@ import ModalAuth from "@/components/common/Modal/ModalAuth";
 import ModalSidebar from "@/components/common/Modal/ModalSidebar";
 import Login from "@/components/UI/Auth/Login/Page";
 import NavItems from "@/components/UI/NavItems/NavItems";
-import { SidebarMobile } from "@/components/common/sidebar/SidebarMobile";
+import { MenuUserMobile } from "@/components/common/sidebar/MenuUserMobile";
 import { GlobalContext } from "@/context";
 import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
 import { useSession } from "next-auth/react";
@@ -15,6 +15,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import avatar from "@/public/assets/avatar.svg";
 import AfterLoginDekstop from "@/components/common/sidebar/AfterLoginDekstop";
+import { MenuMobile } from "@/components/common/sidebar/MenuMobile";
 
 const Header: React.FC = () => {
   const {
@@ -28,11 +29,10 @@ const Header: React.FC = () => {
   const { data } = useSession();
   const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
 
-  
   const [isHovered, setIsHovered] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 10 });
 
-  const handleMouseEnter = (event:any) => {
+  const handleMouseEnter = (event: any) => {
     setIsHovered(true);
     const rect = event.target.getBoundingClientRect();
     setModalPosition({
@@ -40,6 +40,8 @@ const Header: React.FC = () => {
       left: rect.left + window.scrollX,
     });
   };
+
+  console.log(openSidebar);
 
   const handleMouseLeave = () => {
     setIsHovered(false);
@@ -88,7 +90,7 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className="w-full h-[80px] leading-[80px] flex items-center relative md:px-12 lg:px-8"
+      className="w-full h-[80px] leading-[80px] flex items-center relative md:px-10 lg:px-8"
     >
       <div className="container font-Poppins">
         <div className="flex items-center justify-between">
@@ -118,7 +120,7 @@ const Header: React.FC = () => {
                   size={25}
                   className="cursor-pointer text-white "
                   onClick={() =>
-                    setOpenSidebar({ title: "mobile", show: true })
+                    setOpenSidebar({ title: "menuMobile", show: true })
                   }
                 />
               </div>
@@ -156,9 +158,7 @@ const Header: React.FC = () => {
                     className="w-[40px] h-[40px] rounded-full cursor-pointer"
                   />
                   {isHovered && (
-                    <AfterLoginDekstop
-                      modalPosition={modalPosition}
-                    />
+                    <AfterLoginDekstop modalPosition={modalPosition} />
                   )}
                 </div>
               </>
@@ -183,32 +183,55 @@ const Header: React.FC = () => {
               </>
             )}
           </div>
-          {/* for mobile right */}
-          <div className="md:hidden">
-            <button
-              onClick={() =>
-                setComponentAuth({ showModal: true, route: "Login" })
-              }
-              className="flex items-center justify-center gap-2 py-2 px-4 rounded-full max-h-[40px] w-28 bg-primary text-white ease-in duration-200 font-semibold"
-            >
-              Sign In
-            </button>
-          </div>
 
+          {/* for mobile right */}
+          {user && user ? (
+            <div
+              className="md:hidden"
+              onClick={() =>
+                setOpenSidebar({ title: "menuUserMobile", show: true })
+              }
+            >
+              <Image
+                src={user.avatar ? user.avatar : avatar}
+                alt="ImageCaption"
+                className="w-[40px] h-[40px] rounded-full cursor-pointer"
+              />
+            </div>
+          ) : (
+            <div className="md:hidden">
+              <button
+                onClick={() =>
+                  setComponentAuth({ showModal: true, route: "Login" })
+                }
+                className="flex items-center justify-center gap-2 py-2 px-4 rounded-full max-h-[40px] w-28 bg-primary text-white ease-in duration-200 font-semibold"
+              >
+                Sign In
+              </button>
+            </div>
+          )}
+
+          {/* for Md-lg */}
           <div className="hidden md:flex lg:hidden">
             <div className="rounded-full py-2 px-4 bg-primary ">
               <HiOutlineMenuAlt3
                 size={25}
                 className="cursor-pointer text-white "
-                onClick={() => setOpenSidebar({ title: "mobile", show: true })}
+                onClick={() =>
+                  setOpenSidebar({ title: "menuMobile", show: true })
+                }
               />
             </div>
           </div>
         </div>
       </div>
 
-      {openSidebar.title === "mobile" && openSidebar.show == true && (
-        <ModalSidebar component={SidebarMobile} />
+      {openSidebar.title === "menuMobile" && openSidebar.show == true && (
+        <ModalSidebar component={MenuMobile} />
+      )}
+
+      {openSidebar.title === "menuUserMobile" && openSidebar.show == true && (
+        <ModalSidebar component={MenuUserMobile} />
       )}
 
       {componentAuth.route === "Login" && (

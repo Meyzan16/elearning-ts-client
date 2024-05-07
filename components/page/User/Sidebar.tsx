@@ -65,7 +65,7 @@ const SidebarProfile: FC<Props> = ({
                   height={30}
                   className={`${isActive ? 'text-primary' : 'text-dark'}`}
                 />
-                <p className={`text-xl font-semibold max-lg:hidden  ${isActive ? "text-primary": "text-dark"} `}>
+                <p className={`text-xl font-semibold ${isActive ? "text-primary": "text-dark"} `}>
                   {item.label}
                 </p>
               </Link>

@@ -8,6 +8,7 @@ import Promo from "../../UI/Promo/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import InfoPromo from "../../UI/ModalPromo/InfoPromo";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   image: string;
@@ -36,9 +37,9 @@ const CatalogRilisAfterLogin = () => {
       <div className=" hidden mb-20  md:flex md:px-8  mt-14">
         <div className="container">
           <div className="block">
-            <div className="text-primary font-Poppins text-lg font-semibold">
+            <Link  href="/my-resume" className="text-primary font-Poppins text-lg font-semibold">
               Our Recommended
-            </div>
+            </Link>
             <div className="text-3xl text-slate-700 font-Poppins pt-2 font-bold leading-relaxed ">
               Pelajari Skills Baru
               <span className="block">

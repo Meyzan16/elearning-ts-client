@@ -10,13 +10,18 @@ const SidebarLinks: Props[]  = [
         route: "/my-resume",
         imgUrl: "/assets/sidebarUser/my-resume.svg",
     },
+     {
+        label: "Learning Progress",
+        route: "/learning-progress",
+        imgUrl: "/assets/sidebarUser/learning-progress.svg",
+    },
     {
       label: "My Courses",
       route: "/my-courses",
       imgUrl: "/assets/sidebarUser/my-courses.svg",
     },
     {
-      label: "My Masterpiece",
+      label: "My Portfolios",
       route: "/masterpiece",
       imgUrl: "/assets/sidebarUser/my-karya.svg",
     },

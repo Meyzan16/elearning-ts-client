@@ -8,7 +8,7 @@ import NavItems from "../../UI/NavItems/NavItems";
 
 interface Props {}
 
-export const SidebarMobile = (props: Props) => {
+export const MenuUserMobile = (props: Props) => {
   const { openSidebar, setOpenSidebar } = useContext(GlobalContext)!;
   const { user } = useSelector((state: any) => state.auth);
 

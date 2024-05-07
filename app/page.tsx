@@ -26,7 +26,6 @@ const Homepage: FC<Props> = (props) => {
 
   // const token = useSelector((state: any) => state.auth);
   const {user} = useSelector((state: any) => state.auth);
-  console.log(user)
   
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");

@@ -40,10 +40,10 @@ const UserLayout: FC<Props> = ({ children }) => {
         />
         <Header />
 
-        <div className="container ">
-          <div className=" w-full flex mx-auto mt-6 gap-8">
+        <div className="container">
+          <div className=" w-full flex mx-auto mt-6 gap-10">
             <div
-              className={`max-sm:hidden lg:w-[400px] left-0 top-0 flex h-[650px] w-fit flex-col justify-between
+              className={`max-sm:hidden md:w-[500px] lg:w-[400px] left-0 top-0 flex h-[650px] w-fit flex-col justify-between
                bg-white bg-opacity-90 border-2 border-[#ffffff1d] rounded-3xl shadow-lg overflow-y-auto
                 sticky ${scroll ? "top-[120px]" : "top-[30px] "} left-[30px]`}
             >
@@ -56,8 +56,8 @@ const UserLayout: FC<Props> = ({ children }) => {
               />
             </div>
             
-            <section className="max-sm:hidden lg:w-full overflow-y-auto h-[650px] bg-white bg-opacity-90 rounded-3xl shadow-lg">
-              <div className="w-full">{children}</div>
+            <section className="w-full">
+              <div>{children}</div>
             </section>
 
             
