@@ -26,14 +26,14 @@ const SidebarLinks: Props[]  = [
       imgUrl: "/assets/sidebarUser/my-karya.svg",
     },
     {
-      label: "My Settings",
-      route: "/settings",
-      imgUrl: "/assets/sidebarUser/my-settings.svg",
-    },
-    {
       label: "My Transactions",
       route: "/transactions",
       imgUrl: "/assets/sidebarUser/my-transactions.svg",
+    },
+    {
+      label: "My Settings",
+      route: "/settings",
+      imgUrl: "/assets/sidebarUser/my-settings.svg",
     },
     
   ];

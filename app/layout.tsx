@@ -37,7 +37,9 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             <GlobalState>
-              <Custom>{children}</Custom>
+              {/* <Custom>
+                </Custom> */}
+                {children}
             </GlobalState>
           </SessionProvider>
         </Providers>

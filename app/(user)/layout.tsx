@@ -32,7 +32,7 @@ const UserLayout: FC<Props> = ({ children }) => {
 
   return (
     <main>
-      <Protected>
+      {/* <Protected> */}
         <Heading
           title="Profile"
           description="ELearning is a platform for students to learn and get help from teachers"
@@ -41,9 +41,10 @@ const UserLayout: FC<Props> = ({ children }) => {
         <Header />
 
         <div className="container">
-          <div className=" w-full flex mx-auto mt-6 gap-10">
+          <div className="w-full flex mx-auto md:mt-6 gap-10">
             <div
-              className={`max-sm:hidden md:w-[500px] lg:w-[400px] left-0 top-0 flex h-[650px] w-fit flex-col justify-between
+              className={`hidden 
+                md:w-[300px] xl:w-[350px]  md:flex h-[650px] w-fit flex-col 
                bg-white bg-opacity-90 border-2 border-[#ffffff1d] rounded-3xl shadow-lg overflow-y-auto
                 sticky ${scroll ? "top-[120px]" : "top-[30px] "} left-[30px]`}
             >
@@ -56,14 +57,14 @@ const UserLayout: FC<Props> = ({ children }) => {
               />
             </div>
             
-            <section className="w-full">
+            <section className="w-full min-h-screen flex-1 flex-col">
               <div>{children}</div>
             </section>
 
             
           </div>
         </div>
-      </Protected>
+      {/* </Protected> */}
     </main>
   );
 };

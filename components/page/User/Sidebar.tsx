@@ -5,6 +5,7 @@ import Link from "next/link";
 import SidebarLinks from "@/data/SidebarUser";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { HiOutlineHome } from "react-icons/hi2";
 
 interface Props {
   user: any;
@@ -56,16 +57,15 @@ const SidebarProfile: FC<Props> = ({
               <Link
                 href={item.route}
                 key={item.label}
-                className="flex gap-4 items-center p-4 rounded-lg justify-start font-semibold"
+                className={`flex gap-4 items-center p-4 rounded-xl justify-start font-semibold ${isActive && "bg-primary py-4"}`}
               >
                 <Image
                   src={item.imgUrl}
                   alt={item.label}
                   width={30}
                   height={30}
-                  className={`${isActive ? 'text-primary' : 'text-dark'}`}
                 />
-                <p className={`text-xl font-semibold ${isActive ? "text-primary": "text-dark"} `}>
+                <p className={`text-xl text-slate-400 hover:text-black  font-semibold ${isActive && "text-white"} `}>
                   {item.label}
                 </p>
               </Link>

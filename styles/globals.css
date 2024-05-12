@@ -171,6 +171,9 @@ input::-webkit-inner-spin-button {
   top: 100%;
 }
 
+body {
+  scroll-behavior: smooth;
+}
 
 .sticky_header {
   width: 100%;
