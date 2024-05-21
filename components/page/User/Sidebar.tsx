@@ -65,7 +65,7 @@ const SidebarProfile: FC<Props> = ({
                   width={30}
                   height={30}
                 />
-                <p className={`text-xl text-slate-400 hover:text-black  font-semibold ${isActive && "text-white"} `}>
+                <p className={`text-xl text-slate-400 ${!isActive && 'hover:text-black' }   font-semibold ${isActive && "text-white"} `}>
                   {item.label}
                 </p>
               </Link>

@@ -2,8 +2,6 @@
 import CoursesUI from "@/components/page/User/MyCourses/Courses";
 import CourseSkeleton from "@/components/page/User/MyCourses/CoursesSkeleton";
 import TitlePage from "@/components/page/User/TitlePage";
-import KategoriKelasData from "@/data/KategoriKelas";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const MyCourses = () => {
