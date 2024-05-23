@@ -17,20 +17,11 @@ interface IKategoriAccess {
 }
 
 const CoursesUI = () => {
-  const [isHovered, setIsHovered] = useState<number | null>(null);
-
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [modalPosition, setModalPosition] = useState({ top: 10, left: 0 });
-
-  const handleHover = (index: any, event: any) => {
-    setHoveredIndex(index);
-    const rect = event.target.getBoundingClientRect();
-    setModalPosition({ top: rect.bottom, left: rect.left - 80 });
-  };
+  const [isHovered, setIsHovered] = useState<number | null>();  
 
   return (
-    <div className="mt-6 ">
-      <div className="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 xl:grid-cols-4 mx-auto  ">
+    <div className="mt-6">
+      <div className="w-full grid md:grid-cols-2 gap-4 md:gap-8 xl:grid-cols-4 mx-auto  ">
         {MyDataCourses &&
           MyDataCourses.map((i: Props, index: number) => (
             <div key={index}>
@@ -46,7 +37,7 @@ const CoursesUI = () => {
                 <div className="pt-4">
                   {/* title */}
                   <div
-                    className={`mt-4 cursor-pointer font-bold lg:text-base xl:text-2xl font-Poppins 
+                    className={`mt-4 cursor-pointer font-bold lg:text-base xl:text-xl font-Poppins 
                     mb-2 text-slate-700 ${
                       isHovered !== index ? "line-clamp-2" : ""
                     }`}
@@ -59,7 +50,7 @@ const CoursesUI = () => {
 
                 {i.kategoriAccess.map((kategori, kategoriIndex) => (
                   <div key={kategoriIndex}>
-                    <p className="font-Poppins text-slate-400 text-lg">
+                    <p className="font-Poppins text-slate-400  text-md">
                       Kelas {kategori.name}
                     </p>
                   </div>

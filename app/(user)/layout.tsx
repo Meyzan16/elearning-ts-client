@@ -1,11 +1,10 @@
 "use client";
 import React, { FC, useState } from "react";
 import Protected from "../hooks/useProtected";
-import Heading from "@/components/interface/Heading/Heading";
-import Header from "@/components/page/Homepage/Header";
-import Profile from "@/components/page/user/Profile";
+import Heading from "@/components/common/Heading/Heading";
+import Header from "@/components/page/homepage/Header";
 import { useSelector } from "react-redux";
-import SidebarProfile from "@/components/page/user/Sidebar";
+import SidebarProfile from "@/components/interface/DashbordUser/SidebarProfile";
 
 interface Props {
   children: React.ReactNode;
@@ -44,7 +43,7 @@ const UserLayout: FC<Props> = ({ children }) => {
           <div className="w-full flex mx-auto md:mt-6 gap-10">
             <div
               className={`hidden 
-                md:w-[300px] xl:w-[350px]  md:flex h-[650px] w-fit flex-col 
+                md:w-[300px] md:flex h-[650px] w-fit flex-col 
                bg-white bg-opacity-90 border-2 border-[#ffffff1d] rounded-3xl shadow-lg overflow-y-auto
                 sticky ${scroll ? "top-[120px]" : "top-[30px] "} left-[30px]`}
             >

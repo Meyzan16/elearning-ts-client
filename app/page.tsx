@@ -1,6 +1,6 @@
 "use client";
 import React, { FC, useContext, useEffect, useState } from "react";
-import Heading from "@/components/interface/Heading/Heading";
+import Heading from "@/components/common/Heading/Heading";
 import Hero from "@/components/page/homepage/Hero";
 import Corporate from "@/components/page/homepage/Corporate";
 import KategoriKelas from "@/components/page/homepage/KategoriKelas";

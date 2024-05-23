@@ -22,15 +22,13 @@ const SidebarProfile: FC<Props> = ({
   setActive,
   logOutHandler,
 }) => {
-    const pathname = usePathname();
-
+  const pathname = usePathname();
 
   return (
     <div className="w-full">
       <div
-        className={`w-full gap-4 flex justify-center rounded-t-3xl items-center bg-opacity-70 py-4 cursor-pointer ${
-          active === 1 ? "bg-primary" : "bg-transparent"
-        }`}
+        className={`w-full gap-4 flex justify-center rounded-t-3xl items-center bg-opacity-70 py-4 cursor-pointer ${active === 1 ? "bg-primary" : "bg-transparent"
+          }`}
         onClick={() => setActive(1)}
       >
         <Image
@@ -51,24 +49,27 @@ const SidebarProfile: FC<Props> = ({
 
       <div className="px-6 py-10 flex justify-center">
         <div className="flex flex-1 flex-col">
-          {SidebarLinks.map((item) => {
+          {SidebarLinks.map((item, index) => {
             const isActive = pathname === item.route || pathname?.startsWith(`${item.route}/`);
             return (
-              <Link
-                href={item.route}
-                key={item.label}
-                className={`flex gap-4 items-center p-4 rounded-xl justify-start font-semibold ${isActive && "bg-primary py-4"}`}
-              >
-                <Image
-                  src={item.imgUrl}
-                  alt={item.label}
-                  width={30}
-                  height={30}
-                />
-                <p className={`text-xl text-slate-400 ${!isActive && 'hover:text-black' }   font-semibold ${isActive && "text-white"} `}>
-                  {item.label}
-                </p>
-              </Link>
+              <div key={index}>
+
+                <Link
+                  href={item.route}
+                  key={item.label}
+                  className={`flex gap-4 items-center px-2  rounded-xl justify-start font-semibold ${isActive ? "bg-primary py-4" : "py-4"}`}
+                >
+                  <Image
+                    src={item.imgUrl}
+                    alt={item.label}
+                    width={30}
+                    height={30}
+                  />
+                  <p className={`text-lg text-slate-400 ${!isActive && 'hover:text-black'}   font-semibold ${isActive && "text-white"} `}>
+                    {item.label}
+                  </p>
+                </Link>
+              </div>
             );
           })}
         </div>

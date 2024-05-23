@@ -2,8 +2,8 @@
 import ModalAuth from "@/components/common/Modal/ModalAuth";
 import ModalSidebar from "@/components/common/Modal/ModalSidebar";
 import Login from "@/components/interface/Auth/Login/Page";
-import NavItems from "@/components/interface/NavItems/NavItems";
-import { MenuUserMobile } from "@/components/common/sidebar/MenuUserMobile";
+import NavItems from "@/components/common/NavItems/NavItems";
+import { MenuUserMobile } from "@/components/common/Sidebar/MenuUserMobile";
 import { GlobalContext } from "@/context";
 import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
 import { useSession } from "next-auth/react";
@@ -14,8 +14,8 @@ import { FaSearch } from "react-icons/fa";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import avatar from "@/public/assets/avatar.svg";
-import AfterLoginDekstop from "@/components/common/sidebar/AfterLoginDekstop";
-import { MenuMobile } from "@/components/common/sidebar/MenuMobile";
+import AfterLoginDekstop from "@/components/common/Sidebar/AfterLoginDekstop";
+import { MenuMobile } from "@/components/common/Sidebar/MenuMobile";
 
 const Header: React.FC = () => {
   const {

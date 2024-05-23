@@ -27,38 +27,38 @@ const schema = Yup.object().shape({
 });
 
 const Register = () => {
-    const {
-      setComponentAuth,
-      componentLevelLoader,
-      setComponentLevelLoader,
-      setOpenAlert
-    } = useContext(GlobalContext)!;
+  const {
+    setComponentAuth,
+    componentLevelLoader,
+    setComponentLevelLoader,
+    setOpenAlert
+  } = useContext(GlobalContext)!;
 
-  const [register, {data,error,isSuccess}] = useRegisterMutation();
+  const [register, { data, error, isSuccess }] = useRegisterMutation();
 
   useEffect(() => {
-    if(isSuccess){
-      const message = data?.message || "Registaration successfully";  
-      setOpenAlert({status: true, message:message, severity:"success"});
+    if (isSuccess) {
+      const message = data?.message || "Registaration successfully";
+      setOpenAlert({ status: true, message: message, severity: "success" });
       setComponentAuth({ showModal: true, route: "Verification" });
-      setComponentLevelLoader({loading:false,  id:"register"});
+      setComponentLevelLoader({ loading: false, id: "register" });
     }
-    if(error) {
-      if("data" in error) {
-        const errorData = error as any; 
-        setOpenAlert({status: true, message:errorData.data.message, severity:"error"});
-        setComponentLevelLoader({loading:false,  id:"register"});
+    if (error) {
+      if ("data" in error) {
+        const errorData = error as any;
+        setOpenAlert({ status: true, message: errorData.data.message, severity: "error" });
+        setComponentLevelLoader({ loading: false, id: "register" });
       }
     }
-  },[isSuccess, error])
+  }, [isSuccess, error])
 
   const formik = useFormik<Interface>({
     initialValues: { name: "", email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ name, email, password }) => {
-      setComponentLevelLoader({loading:true,  id:"register"});
+      setComponentLevelLoader({ loading: true, id: "register" });
       const data = {
-        name,email,password
+        name, email, password
       }
       await register(data);
 
@@ -107,12 +107,10 @@ const Register = () => {
               "Register"
             )}
           </button>
-
-          
         </div>
       </form>
 
-      
+
     </>
   );
 };
