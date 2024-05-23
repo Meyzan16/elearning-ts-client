@@ -1,4 +1,4 @@
-import TitlePage from "@/components/page/User/TitlePage";
+import TitlePage from "@/components/page/user/TitlePage";
 import KategoriKelasData from "@/data/KategoriKelas";
 import Image from "next/image";
 import React from "react";

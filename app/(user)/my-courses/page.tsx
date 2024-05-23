@@ -1,7 +1,7 @@
 "use client"
-import CoursesUI from "@/components/page/User/MyCourses/Courses";
-import CourseSkeleton from "@/components/page/User/MyCourses/CoursesSkeleton";
-import TitlePage from "@/components/page/User/TitlePage";
+import CoursesUI from "@/components/page/user/MyCourses/Courses";
+import CourseSkeleton from "@/components/page/user/MyCourses/CoursesSkeleton";
+import TitlePage from "@/components/page/user/TitlePage";
 import React, { useEffect, useState } from "react";
 
 const MyCourses = () => {

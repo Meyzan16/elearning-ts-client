@@ -1,11 +1,11 @@
 "use client";
 import React, { FC, useState } from "react";
 import Protected from "../hooks/useProtected";
-import Heading from "@/components/UI/Heading/Heading";
+import Heading from "@/components/interface/Heading/Heading";
 import Header from "@/components/page/Homepage/Header";
-import Profile from "@/components/page/User/Profile";
+import Profile from "@/components/page/user/Profile";
 import { useSelector } from "react-redux";
-import SidebarProfile from "@/components/page/User/Sidebar";
+import SidebarProfile from "@/components/page/user/Sidebar";
 
 interface Props {
   children: React.ReactNode;

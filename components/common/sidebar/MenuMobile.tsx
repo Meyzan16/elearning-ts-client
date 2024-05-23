@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import avatar from "@/public/assets/avatar.svg";
-import NavItems from "../../UI/NavItems/NavItems";
+import NavItems from "../../interface/NavItems/NavItems";
 
 interface Props {}
 

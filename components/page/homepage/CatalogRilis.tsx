@@ -2,11 +2,11 @@
 
 import React, { FC, useEffect, useRef, useState } from "react";
 import CatalogRilisData from "@/data/CatalogRilis";
-import StarRating from "../../UI/Rating/Rating";
+import StarRating from "../../interface/Rating/Rating";
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import Promo from "../../UI/Promo/Promo";
+import Promo from "../../interface/Promo/Promo";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import InfoPromo from "../../UI/ModalPromo/InfoPromo";
+import InfoPromo from "../../interface/ModalPromo/InfoPromo";
 import Image from "next/image";
 
 type Props = {

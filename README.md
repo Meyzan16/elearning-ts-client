@@ -6,3 +6,5 @@
 #instal MUI.com for material ui
 1. npm install @mui/icons-material @mui/material @emotion/react @emotion/styled
 2. npm i react-hot-toast react redux @reduxjs/toolkit formik yup
+
+--silahkan untuk install npm modules

@@ -1,8 +1,8 @@
 "use client";
 import ModalAuth from "@/components/common/Modal/ModalAuth";
 import ModalSidebar from "@/components/common/Modal/ModalSidebar";
-import Login from "@/components/UI/Auth/Login/Page";
-import NavItems from "@/components/UI/NavItems/NavItems";
+import Login from "@/components/interface/Auth/Login/Page";
+import NavItems from "@/components/interface/NavItems/NavItems";
 import { MenuUserMobile } from "@/components/common/sidebar/MenuUserMobile";
 import { GlobalContext } from "@/context";
 import { useSocialAuthMutation } from "@/redux/features/auth/authApi";

@@ -1,21 +1,20 @@
 "use client";
 import React, { FC, useContext, useEffect, useState } from "react";
-import Heading from "../components/UI/Heading/Heading";
-// import Header from "./homepage/Header";
-import Hero from "../components/page/Homepage/Hero";
-import Corporate from "../components/page/Homepage/Corporate";
-import KategoriKelas from "../components/page/Homepage/KategoriKelas";
-import Benefit from "../components/page/Homepage/Benefit";
-import Kelas from "../components/page/Homepage/Kelas";
-import CatalogRilis from "../components/page/Homepage/CatalogRilis";
-import BannerPromo from "../components/page/Homepage/BannerPromo";
-import Reviews from "../components/page/Homepage/Reviews";
+import Heading from "@/components/interface/Heading/Heading";
+import Hero from "@/components/page/homepage/Hero";
+import Corporate from "@/components/page/homepage/Corporate";
+import KategoriKelas from "@/components/page/homepage/KategoriKelas";
+import Benefit from "@/components/page/homepage/Benefit";
+import Kelas from "@/components/page/homepage/Kelas";
+import CatalogRilis from "@/components/page/homepage/CatalogRilis";
+import BannerPromo from "@/components/page/homepage/BannerPromo";
+import Reviews from "@/components/page/homepage/Reviews";
 import { useSpring, animated } from "@react-spring/web";
 import { GlobalContext } from "@/context";
-import { QAS } from "../components/page/Homepage/QAS";
+import { QAS } from "@/components/page/homepage/QAS";
 import { useSelector } from "react-redux";
-import CatalogRilisAfterLogin from "../components/page/Homepage/CatalogRilisAfterLogin";
-import Header from "../components/page/Homepage/Header";
+import CatalogRilisAfterLogin from "@/components/page/homepage/CatalogRilisAfterLogin";
+import Header from "@/components/page/homepage/Header";
 import AlertComponents from "@/components/common/Alert/AlertComponents";
 
 interface Props {}

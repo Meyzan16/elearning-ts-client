@@ -1,7 +1,7 @@
 'use client';
 
 import AlertComponents from "@/components/common/Alert/AlertComponents";
-import GuardToVerification from "@/components/UI/Auth/GuardToVerification";
+import GuardToVerification from "@/components/interface/Auth/GuardToVerification";
 import { GlobalContext } from "@/context";
 import React, { useContext } from "react";
 
