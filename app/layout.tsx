@@ -3,13 +3,13 @@
 import "../styles/globals.css";
 import { Poppins } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
-import AosInit from "../components/common/Aos/AosInit";
+import AosInit from "../components/UI/Aos/AosInit";
 import GlobalState from "@/context";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./provider";
 import { SessionProvider } from "next-auth/react";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import { Loading } from "@/components/common/Loading/Loading";
+import { Loading } from "@/components/UI/Loading/Loading";
 
 const poppins = Poppins({
   subsets: ["latin"],

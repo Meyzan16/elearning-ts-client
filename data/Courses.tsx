@@ -30,6 +30,16 @@ const MyDataCourses: props[] = [
     img: "/assets/mycourses/1.png",
       kategoriAccess: [{ name: "Starter", value: "starter" }],
   },
+  {
+    title: "PHP Laravel web development",
+    img: "/assets/mycourses/1.png",
+      kategoriAccess: [{ name: "Starter", value: "starter" }],
+  },
+  {
+    title: "PHP Laravel web development",
+    img: "/assets/mycourses/1.png",
+      kategoriAccess: [{ name: "Starter", value: "starter" }],
+  },
 ];
 
 export default MyDataCourses
