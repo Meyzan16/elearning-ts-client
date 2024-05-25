@@ -53,7 +53,6 @@ const SidebarProfile: FC<Props> = ({
             const isActive = pathname === item.route || pathname?.startsWith(`${item.route}/`);
             return (
               <div key={index}>
-
                 <Link
                   href={item.route}
                   key={item.label}
