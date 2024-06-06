@@ -32,7 +32,7 @@ const SidebarLinks: Props[] = [
   },
   {
     label: "My Settings",
-    route: "/settings",
+    route: "/my-settings",
     imgUrl: "/assets/sidebarUser/my-settings.svg",
   },
 
