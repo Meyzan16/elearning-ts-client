@@ -1,23 +1,23 @@
 'use client';
 import React, { createContext, useState } from "react";
 
-type SidebarState = {
+interface SidebarState {
   show: boolean;
   title: string;
 };
 
-type AlertState = {
+interface AlertState {
   status: boolean;
   message: string;
   severity: string;
 };
 
-type ComponentAuthState = {
+interface ComponentAuthState {
   showModal: boolean;
   route: string;
 };
 
-type ComponentLoaderState = {
+interface ComponentLoaderState {
   loading: boolean;
   id: string;
 };

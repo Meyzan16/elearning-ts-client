@@ -5,7 +5,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import bannerRegister from "@/public/assets/banner_register.png";
 
-type Interface = {
+interface Interface {
   Title: string;
   subTitle: string;
   titleForm: string;

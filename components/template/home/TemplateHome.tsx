@@ -1,8 +1,7 @@
 "use client"
 import Heading from '@/components/UI/Heading/Heading';
-import Header from '@/components/pages/home/Header';
 import Hero from '@/components/pages/home/Hero';
-import { QAS } from '@/components/pages/home/QAS';
+import QAS from '@/components/pages/home/QAS';
 import MenuKelas from '@/components/pages/home/KategoriKelas';
 import React, { useContext, useEffect, useState } from 'react'
 import Corporate from '@/components/pages/home/Corporate';
@@ -37,9 +36,6 @@ const Home = () => {
                 keywords="Programming, Mern , Redux , Machine Learning"
             />
             {/* <BannerPromo /> */}
-            {/* <Header /> */}
-            <Header />
-
             {isMobile ? (
                 <>
                     <Hero />
@@ -48,13 +44,23 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    {!user && <Hero />}
-                    {!user && <Corporate />}
-                    {!user && <MenuKelas />}
-                    {!user && <Benefit />}
-                    {user && <CatalogRilisAfterLogin />}
-                    <Kelas />
-                    {!user && <CatalogRilis />}
+                    {
+                        !user ? (
+                            <>
+                                <Hero />
+                                <Corporate />
+                                <MenuKelas />
+                                <Benefit />
+                                <Kelas />
+                                <CatalogRilis />
+                            </>
+                        ):(
+                            <>
+                                <CatalogRilisAfterLogin /> 
+                                <Kelas />
+                            </>
+                        )
+                    } 
                 </>
             )}
             {/* <Reviews /> */}

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-interface Props {}
+
+
 const AfterLoginDekstop = ({
   modalPosition,
 }: {

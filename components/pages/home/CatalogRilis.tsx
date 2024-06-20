@@ -9,7 +9,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import InfoPromo from "../../container/ModalPromo/InfoPromo";
 import Image from "next/image";
 
-type Props = {
+interface Interface {
   image: string;
   title: string;
   promo?: number;
@@ -48,7 +48,7 @@ const CatalogRilis = () => {
             <div className="w-full mt-8">
               <div className="w-full gap-4 grid grid-cols-2  md:gap-8 lg:gap-12 md:grid-cols-2 xl:grid-cols-4 mx-auto  ">
                 {CatalogRilisData &&
-                  CatalogRilisData.map((i: Props, index: number) => (
+                  CatalogRilisData.map((i: Interface, index: number) => (
                     <div key={index}>
                       <div
                         className="rounded-2xl shadow-lg relative overflow-hidden mb-10 sm:mb-0

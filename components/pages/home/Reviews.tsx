@@ -2,9 +2,7 @@
 
 import React from "react";
 
-type Props = {};
-
-const Reviews = (props: Props) => {
+const Reviews = () => {
   return (
     <div className="mb-20 ">
       <div className="text-center">

@@ -3,7 +3,7 @@
 import React, { FC } from 'react'
 import { PulseLoader } from 'react-spinners';
 
-type Props = {
+interface Props  {
     text: string;
     color: string;
     loading: (boolean);

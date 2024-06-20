@@ -3,7 +3,7 @@ import ModalAuth from "@/components/container/Modal/ModalAuth";
 import ModalSidebar from "@/components/container/Modal/ModalSidebar";
 import Login from "@/components/pages/auth/Login/Login";
 import NavItems from "@/components/UI/NavItems/NavItems";
-import { MenuUserMobile } from "@/components/container/Sidebar/MenuUserMobile";
+import {MenuMobile, MenuUserMobile}  from "@/components/container/Sidebar/MenuMobile";
 import { GlobalContext } from "@/context";
 import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
 import { useSession } from "next-auth/react";
@@ -15,7 +15,6 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import avatar from "@/public/assets/avatar.svg";
 import AfterLoginDekstop from "@/components/container/Sidebar/AfterLoginDekstop";
-import { MenuMobile } from "@/components/container/Sidebar/MenuMobile";
 
 const Header: React.FC = () => {
   const {
@@ -41,22 +40,21 @@ const Header: React.FC = () => {
     });
   };
 
-  console.log(openSidebar);
-
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
 
   useEffect(() => {
-    if (!user) {
-      if (data) {
-        socialAuth({
-          email: data?.user?.email,
-          name: data?.user?.name,
-          avatar: data?.user?.image,
-        });
-      }
+    if (!user && data) {
+      socialAuth({
+        email: data?.user?.email,
+        name: data?.user?.name,
+        avatar: data?.user?.image,
+      });
     }
+  }, [user, data, socialAuth]);
+
+  useEffect(() => {
     if (isSuccess) {
       setOpenAlert({
         status: true,
@@ -64,36 +62,34 @@ const Header: React.FC = () => {
         severity: "success",
       });
     }
-  }, [user, data]);
+  }, [isSuccess, setOpenAlert]);
 
   const headerRef = useRef<HTMLHeadingElement>(null);
   const stickyHeaderFunc = () => {
-    window.addEventListener("scroll", () => {
-      if (headerRef.current) {
-        if (
-          document.body.scrollTop > 80 ||
-          document.documentElement.scrollTop > 80
-        ) {
-          headerRef.current.classList.add("sticky_header");
-        } else {
-          headerRef.current.classList.remove("sticky_header");
-        }
+    if (headerRef.current) {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky_header");
+      } else {
+        headerRef.current.classList.remove("sticky_header");
       }
-    });
+    }
   };
 
   useEffect(() => {
-    stickyHeaderFunc();
+    window.addEventListener("scroll", stickyHeaderFunc);
     return () => window.removeEventListener("scroll", stickyHeaderFunc);
   }, []);
 
   return (
-    <header
-      ref={headerRef}
-      className="w-full h-[80px] leading-[80px] flex items-center relative md:px-10 lg:px-8"
-    >
-      <div className="container font-Poppins">
-        <div className="flex items-center justify-between">
+    <>
+      <div
+        ref={headerRef}
+        className="w-full h-[80px] leading-[80px] flex items-center relative md:px-10 lg:px-8"
+      >
+        <div className="container font-Poppins flex items-center justify-between">
           {/* logo for dekstop right */}
           <div className="hidden md:flex">
             <div className="flex items-center gap-2">
@@ -113,7 +109,7 @@ const Header: React.FC = () => {
           {/* logoo end */}
 
           {/* logo for mobile right */}
-          <div className="md:hidden flex justify-between items-center flex-wrap w-full">
+          <div className="md:hidden flex justify-between items-center flex-wrap w-full ">
             <div className="flex gap-2">
               <div className="rounded-full py-2 px-4 bg-primary ">
                 <HiOutlineMenuAlt3
@@ -167,7 +163,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/register"
                   className="flex items-center justify-center gap-2 text-stone-700 font-[600] border border-solid
-                  border-smallTextColor py-2 px-4 rounded-full max-h-[40px] hover:bg-primary hover:border-primary hover:text-white hover:font-[500] ease-in duration-200"
+                    border-smallTextColor py-2 px-4 rounded-full max-h-[40px] hover:bg-primary hover:border-primary hover:text-white hover:font-[500] ease-in duration-200"
                 >
                   Sign Up
                 </Link>
@@ -176,7 +172,7 @@ const Header: React.FC = () => {
                     setComponentAuth({ showModal: true, route: "Login" })
                   }
                   className="flex items-center justify-center gap-2 text-stone-700 font-[600] border border-solid
-                            border-smallTextColor py-2 px-4 rounded-full max-h-[40px] hover:bg-primary hover:border-primary hover:text-white hover:font-[500] ease-in duration-200"
+                              border-smallTextColor py-2 px-4 rounded-full max-h-[40px] hover:bg-primary hover:border-primary hover:text-white hover:font-[500] ease-in duration-200"
                 >
                   Sign In
                 </button>
@@ -234,10 +230,10 @@ const Header: React.FC = () => {
         <ModalSidebar component={MenuUserMobile} />
       )}
 
-      {componentAuth.route === "Login" && (
-        componentAuth.showModal && <ModalAuth component={Login} />
+      {componentAuth.route === "Login" && componentAuth.showModal && (
+        <ModalAuth component={Login} />
       )}
-    </header>
+    </>
   );
 };
 

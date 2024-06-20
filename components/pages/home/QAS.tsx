@@ -1,16 +1,10 @@
 'use client';
 
+import React from "react";
 import Image from "next/image";
-import React, { useContext } from "react";
-import { IoClose } from "react-icons/io5";
-import avatar from "../../public/assets/avatar.svg";
-import { GlobalContext } from "@/context";
-import { useSelector } from "react-redux";
-import Link from "next/link";
 import ic_konsultasi from '@/public/assets/ic_konsultasi.svg';
-interface Props {}
 
-export const QAS = (props: Props) => {
+const QAS = () => {
   return (
     <div className="container">
       <div className="rounded-xl bg-white shadow-lg shadow-slate-300 mb-6">
@@ -49,3 +43,5 @@ export const QAS = (props: Props) => {
     </div>
   );
 };
+
+export default QAS;

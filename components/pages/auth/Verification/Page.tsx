@@ -6,11 +6,6 @@ import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/UI/Loader/Loader";
 
-
-type Props = {
-  setRoute: (route: string) => void;
-};
-
 type VerifyNumber = {
   "0": string;
   "1": string;
@@ -18,7 +13,7 @@ type VerifyNumber = {
   "3": string;
 };
 
-const Verification: FC<Props> = (props: Props) => {
+const Verification = () => {
   const router = useRouter();
   const { token } = useSelector((state: any) => state.auth);
 

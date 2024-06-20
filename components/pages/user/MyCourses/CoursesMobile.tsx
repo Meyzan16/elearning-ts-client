@@ -1,7 +1,6 @@
 "use client";
 
 import MyDataCourses from "@/data/Courses";
-import KategoriKelasData from "@/data/KategoriKelas";
 import Image from "next/image";
 import React, { useState } from "react";
 

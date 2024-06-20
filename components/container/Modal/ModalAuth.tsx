@@ -3,12 +3,12 @@ import React, {FC, useContext} from 'react'
 import {Modal,Box} from "@mui/material";
 import { GlobalContext } from '@/context';
 
-type Props = {
+interface Props {
     component: any;
     setRoute?:(route: string) => void;
 }
 
-const ModalAuth: FC<Props> = ({component:Component}) => {
+const ModalAuth:FC<Props> = ({component:Component}) => {
   const {
     setComponentAuth,
     componentAuth,

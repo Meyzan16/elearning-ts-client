@@ -2,9 +2,7 @@ import KategoriKelasData from '@/data/KategoriKelas';
 import Image from 'next/image';
 import React from 'react'
 
-type Props = {}
-
-const PageResume = (props: Props) => {
+const PageResume = () => {
   return (
     <div className="mt-4">
       <div className="w-full grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 xl:grid-cols-4 mx-auto  ">

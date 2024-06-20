@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-type Props = {};
-
 const InfoPromo = ({
   modalPosition,
 }: {

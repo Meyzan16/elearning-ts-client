@@ -1,10 +1,7 @@
 import MyDataCourses from "@/data/Courses";
-import Image from "next/image";
 import React from "react";
 
-type Props = {};
-
-const CourseSkeleton = (props: Props) => {
+const CourseSkeleton = () => {
   return (
     <div className="mt-4 animate-pulse">
       <div className="md:w-full md:grid md:grid-cols-2 md:gap-8 xl:grid-cols-4 md:mx-auto  ">

@@ -12,7 +12,7 @@ import ComponentLevelLoader from "@/components/UI/Loader/Loader";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { signIn } from "next-auth/react";
 
-type Interface = {
+interface Interface {
   email: string;
   password: string;
   [key: string]: any;

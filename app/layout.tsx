@@ -1,15 +1,13 @@
 "use client";
-
 import "../styles/globals.css";
 import { Poppins } from "next/font/google";
 import { Josefin_Sans } from "next/font/google";
 import AosInit from "../components/UI/Aos/AosInit";
 import GlobalState from "@/context";
-import { Toaster } from "react-hot-toast";
 import { Providers } from "./provider";
 import { SessionProvider } from "next-auth/react";
-import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import { Loading } from "@/components/UI/Loading/Loading";
+import Header from "@/components/pages/home/Header";
+import { ProtectedUrl } from "./hooks/useProtectedUrl";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,11 +21,11 @@ const josefin = Josefin_Sans({
   variable: "--font-Josefin",
 });
 
-export default function RootLayout({
-  children,
-}: {
+interface LayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <AosInit />
@@ -35,11 +33,12 @@ export default function RootLayout({
         className={`${poppins.variable} ${josefin.variable} bg-slate-50 bg-no-repeat`}
       >
         <Providers>
-          <SessionProvider>
+          <SessionProvider >
             <GlobalState>
-              {/* <Custom>
-                </Custom> */}
+              <Header />
+              <ProtectedUrl>
                 {children}
+              </ProtectedUrl>
             </GlobalState>
           </SessionProvider>
         </Providers>
@@ -48,7 +47,7 @@ export default function RootLayout({
   );
 }
 
-const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isLoading } = useLoadUserQuery({});
-  return isLoading ? <Loading /> : <>{children}</>;
-};
+// const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+//   const { isLoading } = useLoadUserQuery({});
+//   return isLoading ? <Loading /> : <>{children}</>;
+// };

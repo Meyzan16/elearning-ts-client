@@ -2,12 +2,10 @@
 
 import React, { FC } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import bwaTest from '@/public/assets/bwaTest.webp';
-type Props = {};
 
-const Hero: FC<Props> = (props) => {
+const Hero = () => {
   return (
     <>
       <div className="w-full mt-4 md:mt-0 md:py-16 md:px-12 lg:px-8 flex-col items-center justify-between  ">

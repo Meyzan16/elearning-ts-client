@@ -1,7 +1,5 @@
 import Heading from '@/components/UI/Heading/Heading';
 import SidebarProfile from '@/components/UI/User/SidebarProfile';
-import TitlePage from '@/components/UI/User/TitlePage';
-import Header from '@/components/pages/home/Header';
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
@@ -36,8 +34,6 @@ const TemplateUser = ({ children }: Props) => {
         description="ELearning is a platform for students to learn and get help from teachers"
         keywords="Programming, Mern , Redux , Machine Learning"
       />
-      <Header />
-
       <div className="container">
         <div className="w-full flex mx-auto md:mt-6 gap-10">
           <div

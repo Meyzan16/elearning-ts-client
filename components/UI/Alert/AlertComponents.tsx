@@ -5,13 +5,6 @@ import Alert, { AlertColor } from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { GlobalContext } from "@/context";
 
-interface Props {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  severity: AlertColor;
-  message: string;
-}
-
 const AlertComponents = () => {
   const { openAlert, setOpenAlert } = useContext(GlobalContext)!;
 

@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-type OptionItem = {
+interface OptionItem  {
   id: string;
   label: string;
 };
 
-type InterfaceSelect = {
+interface InterfaceSelect {
   label: string
   value: any
   onChange: any

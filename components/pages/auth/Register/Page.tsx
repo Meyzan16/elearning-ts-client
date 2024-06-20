@@ -11,7 +11,7 @@ import { GlobalContext } from "@/context";
 import ComponentLevelLoader from "@/components/UI/Loader/Loader";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
 
-type Interface = {
+interface Interface {
   name: string;
   email: string;
   password: string;

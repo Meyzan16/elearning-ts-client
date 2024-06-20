@@ -4,10 +4,7 @@ import React from "react";
 import benefit from '@/public/assets/benefit.png';
 import ic_check from '@/public/assets/ic_check.svg';
 
-
-type Props = {};
-
-const Benefit = (props: Props) => {
+const Benefit = () => {
   return (
     <section className="hidden md:block">
       <div className="mb-20">

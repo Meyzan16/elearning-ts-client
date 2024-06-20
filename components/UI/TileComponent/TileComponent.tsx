@@ -1,12 +1,12 @@
 import React, {FC} from  "react";
 
-type Interface = {
+interface Props  {
     data:any
     selected:any []
     onClick:any
 }
 
-const TileComponent:FC <Interface>  = ({ data, selected = [], onClick }) => {
+const TileComponent:FC<Props>  = ({ data, selected = [], onClick }) => {
   return data && data.length ? (
     <div className="mt-3 flex flex-wrap items-center gap-1">
       {data.map((dataItem:any) => (

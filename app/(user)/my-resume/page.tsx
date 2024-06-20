@@ -1,7 +1,5 @@
 import TitlePage from "@/components/UI/User/TitlePage";
 import PageResume from "@/components/pages/user/MyResume/Page";
-import KategoriKelasData from "@/data/KategoriKelas";
-import Image from "next/image";
 import React from "react";
 
 const MyResume = () => {
