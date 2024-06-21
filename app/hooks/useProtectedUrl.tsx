@@ -7,12 +7,11 @@ interface Props {
   children: React.ReactNode;
 }
 
-const protectedRoutes = ["my-courses", "my-resume", "my-settings", "register"];
+const protectedRoutes = ["my-courses", "my-resume", "my-settings", "register", "backgrounds"];
 
 export function ProtectedUrl ({children}: Props) { 
   const pathName = usePathname();
   const router = useRouter();
-  const [checked,setCheked] = useState(false);
   
   useEffect(() => {
     const normalizedPathName = pathName && pathName.startsWith("/") ? pathName.slice(1) : pathName;

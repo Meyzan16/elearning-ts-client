@@ -60,12 +60,7 @@ const Register = () => {
       const data = {
         name, email, password
       }
-      const message = "Registaration successfully";
-      setOpenAlert({ status: true, message: message, severity: "success" });
-      setComponentAuth({ showModal: true, route: "Verification" });
-      setComponentLevelLoader({ loading: false, id: "register" });
-
-      // await register(data);
+      await register(data);
 
     },
   });

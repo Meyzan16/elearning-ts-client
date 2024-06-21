@@ -22,6 +22,11 @@ interface ComponentLoaderState {
   id: string;
 };
 
+interface Search {
+  show: boolean;
+  title: string;
+}
+
 type ContextType = {
   openSidebar: SidebarState;
   setOpenSidebar: React.Dispatch<React.SetStateAction<SidebarState>>;
@@ -35,6 +40,9 @@ type ContextType = {
   setPageLevelLoader: React.Dispatch<React.SetStateAction<boolean>>;
   openAlert: AlertState;
   setOpenAlert: React.Dispatch<React.SetStateAction<AlertState>>;
+  openSearch: Search;
+  setOpenSearch: React.Dispatch<React.SetStateAction<Search>>;
+
 };
 
 export const GlobalContext = createContext<ContextType | null>(null);
@@ -49,6 +57,11 @@ export default function GlobalState({
     show: false,
     title: "",
   });
+
+  const [openSearch, setOpenSearch] = useState<Search>({
+    show: false,
+    title: "",
+  })
 
   const [componentAuth, setComponentAuth] = useState<ComponentAuthState>({
     showModal: false,
@@ -83,6 +96,8 @@ export default function GlobalState({
         setPageLevelLoader,
         openAlert,
         setOpenAlert,
+        setOpenSearch,
+        openSearch,
       }}
     >
       {children}

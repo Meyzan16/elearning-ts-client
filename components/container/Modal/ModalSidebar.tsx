@@ -2,7 +2,6 @@
 import { GlobalContext } from "@/context";
 import { Box, Modal } from "@mui/material";
 import Slide from '@mui/material/Slide';
-import Switch from '@mui/material/Switch';
 import React, { FC, useContext, useEffect, useState } from "react";
 
 interface Props {

@@ -35,6 +35,7 @@ const Verification = () => {
       });
       setTimeout(() => {
         setComponentAuth({ showModal: false, route: "Verification" });
+        setOpenAlert({status:false, message:"", severity:""});
         router.push('/background');
       }, 2000);
     }

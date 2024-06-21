@@ -15,6 +15,8 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import avatar from "@/public/assets/avatar.svg";
 import AfterLoginDekstop from "@/components/container/Sidebar/AfterLoginDekstop";
+import { ModalSearchDekstop } from "@/components/container/Modal/ModalSearch";
+import { Dekstop } from "../search/dekstop";
 
 const Header: React.FC = () => {
   const {
@@ -23,6 +25,8 @@ const Header: React.FC = () => {
     componentAuth,
     setComponentAuth,
     setOpenAlert,
+    setOpenSearch,
+    openSearch
   } = useContext(GlobalContext)!;
   const { user } = useSelector((state: any) => state.auth);
   const { data } = useSession();
@@ -30,6 +34,8 @@ const Header: React.FC = () => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 10 });
+
+  console.log(openSearch);
 
   const handleMouseEnter = (event: any) => {
     setIsHovered(true);
@@ -135,7 +141,7 @@ const Header: React.FC = () => {
           {/* for dekstop right */}
           <div className="hidden xl:flex items-center gap-4">
             <div className="rounded-full py-2 px-4 bg-primary flex items-center">
-              <FaSearch size={20} className="cursor-pointer text-white " />
+                <FaSearch onClick={() => setOpenSearch({show:true, title:"dekstop"})} size={20} className="cursor-pointer text-white " />
             </div>
             {user && user ? (
               <>
@@ -222,17 +228,25 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {openSidebar.title === "menuMobile" && openSidebar.show == true && (
+      {
+         openSearch.title === "dekstop" &&  openSearch.show && (
+          <ModalSearchDekstop component={Dekstop} />
+        )
+      }
+      
+      {openSidebar.title === "menuMobile" && openSidebar.show && (
         <ModalSidebar component={MenuMobile} />
       )}
 
-      {openSidebar.title === "menuUserMobile" && openSidebar.show == true && (
+      {openSidebar.title === "menuUserMobile" && openSidebar.show && (
         <ModalSidebar component={MenuUserMobile} />
       )}
 
       {componentAuth.route === "Login" && componentAuth.showModal && (
         <ModalAuth component={Login} />
       )}
+
+      
     </>
   );
 };

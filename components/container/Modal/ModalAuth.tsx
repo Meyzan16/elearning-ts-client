@@ -27,8 +27,7 @@ const ModalAuth:FC<Props> = ({component:Component}) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
     >
-        <Box className={`absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[90%]
-            ${componentAuth.route === 'Verification' ? 'md:w-[480px]' : 'lg:w-[1000px]'} bg-white  shadow rounded-[40px] outline-none`}>
+        <Box className={`absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[90%] lg:w-[1000px] bg-white  shadow rounded-[40px] outline-none`}>
             <Component setOpen={componentAuth.showModal} setRoute={componentAuth.route} />
         </Box>
     </Modal>
