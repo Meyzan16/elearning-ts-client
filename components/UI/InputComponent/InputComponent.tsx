@@ -28,7 +28,7 @@ const InputComponent: FC<Interface> = ({
 
   return (
     <>
-      <div className="my-4">
+      <div className="my-6">
         <div className="relative">
           <p className="pt-0 pr-2 pb-0 pl-2 absolute -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 bg-white ">
             {label}
@@ -50,7 +50,7 @@ const InputComponent: FC<Interface> = ({
                       focus:border-primary w-full 
                       px-4 py-4 my-0 mt-0 
                       text-base block bg-white
-                      border-gray-300 rounded-lg `}
+                      border-gray-300 rounded-full `}
           />
 
           {isPasswordInput &&
@@ -69,6 +69,7 @@ const InputComponent: FC<Interface> = ({
             ))}
         </div>
       </div>
+
       {errors && touched && (
         <span
           className="text-red-500 pt-2 block font-Poppins text-base"

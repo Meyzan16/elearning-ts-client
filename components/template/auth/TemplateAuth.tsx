@@ -15,23 +15,23 @@ interface Interface {
 const Auth: FC<Interface> = ({ Title, subTitle, titleForm, type }) => {
   return (
     <section>
-      <div className="h-screen flex items-start">
-        <div className=" relative w-1/4 h-full flex flex-col mr-12">
+      <div className="h-screen ">
+        {/* <div className=" relative w-1/4 h-full flex flex-col mr-12">
           <Image
             src={bannerRegister}
             alt="Banner"
             className="w-full h-full object-cover"
             width={500}
           />
-        </div>
+        </div> */}
 
-        <div className="lg:w-3/4 w-full">
-          <div className="lg:max-w-screen-md mb-6 overflow-y-auto">
+        <div className="flex justify-center items-center  ">
+          <div className="mb-6 xl:w-[40%] md:w-[70%]">
             <div className="my-4">
-              <div className="font-Poppins text-[38px] font-bold text-primary">
+              <div className="font-Poppins text-[38px] font-bold text-primary text-center">
                 {Title}
               </div>
-              <div className="my-6 font-Poppins text-left text-xl text-slate-500">
+              <div className="my-6 font-Poppins text-center text-xl text-slate-500">
                 {subTitle}
                 <span className="block">
                   menggunakan data Anda yang valid
@@ -52,15 +52,17 @@ const Auth: FC<Interface> = ({ Title, subTitle, titleForm, type }) => {
                   {type === "background" && (
                     <div className="overflow-y-auto">
                       <div className="text-dark">
-                        testing backgroudn
+                        testing backgroud
                       </div>
                     </div>
                   )}
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
+
       </div>
     </section>
   );

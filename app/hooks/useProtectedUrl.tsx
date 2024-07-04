@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const protectedRoutes = ["my-courses", "my-resume", "my-settings", "register", "backgrounds"];
+const protectedRoutes = ["my-courses", "my-resume", "my-settings", "register", "background", "edit-profile"];
 
 export function ProtectedUrl ({children}: Props) { 
   const pathName = usePathname();

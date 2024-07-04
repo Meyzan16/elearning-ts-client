@@ -9,7 +9,7 @@ interface InterfaceSelect {
   label: string
   value: any
   onChange: any
-  options: OptionItem[];
+  options?: OptionItem[];
 }
 
 const SelectComponent:FC <InterfaceSelect> = ({ label, value, onChange, options = [] }) => {
@@ -21,7 +21,7 @@ const SelectComponent:FC <InterfaceSelect> = ({ label, value, onChange, options 
       <select
         value={value}
         onChange={onChange}
-        className="border placeholder-gray-400 focus:outline-none focus:border-black w-full px-4 py-4 my-0 mt-0 text-base block bg-white border-gray-300 rounded-lg"
+        className="border placeholder-gray-400 focus:outline-none focus:border-primary w-full px-4 py-4 my-0 mt-0 text-base block bg-white border-gray-300 rounded-full"
       >
         {options && options.length ? (
           options.map((optionItem) => (

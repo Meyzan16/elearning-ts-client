@@ -30,7 +30,7 @@ const Verification = () => {
     if (isSuccess) {
       setOpenAlert({
         status: true,
-        message: "Account activated, You will be redirected to the login page",
+        message: "Account activated. please wait, you will be redirected to next step",
         severity: "success",
       });
       setTimeout(() => {
